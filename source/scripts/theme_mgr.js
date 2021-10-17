@@ -1,4 +1,4 @@
-var icon = document.getElementById("icon");
+var icon = document.getElementById("theme-switch-icon");
 
 if(localStorage.getItem("theme") == null){
     localStorage.setItem("theme", "light");
