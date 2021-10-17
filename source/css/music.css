@@ -134,7 +134,7 @@ gr1 {
 .container {
     width: 100%;
     height: 100vh;
-    padding: 0 8%;
+    padding: 0 10%;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
@@ -142,51 +142,40 @@ gr1 {
 }
 
 .container h1 {
-    text-align: center;
-    padding-top: 3%;
+    text-align: right;
+    padding-top: 5%;
     margin-bottom: 60px;
     font-size: 100px;
     color: var(--services-text-color);
     position: relative;
 }
 
-.row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 30px;
-}
+.sidenav {
+    height: 100%;
+    width: 700px;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #ab0032;
+    overflow-x: hidden;
+  }
+  
+  
 
-.service {
-    text-align: center;
-    padding: 25px 10px;
-    border-radius: 5px;
-    font-size: 18px;
-    color: var(--services-text-color);
-    cursor: pointer;
-    background: var(--services-background);
-    transition: transform 0.15s, background 0.15s;
-}
+  .sidenav a {
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
 
-.service i {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: var(--services-color);
-    transition: color 0.15s;
-}
+  .sidenav a:hover {
+    background-color: white;
+    color: black;
+  }
+  
+ 
 
-.service h2 {
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.service:hover {
-    background: var(--services-color);
-    color: #fff;
-    transform: scale(1.05);
-    --gradient-a: linear-gradient(90deg, #7bdbd3 0%, #50bad4 95%);
-}
-
-.service:hover i {
-    color: #fff;
-}
 
