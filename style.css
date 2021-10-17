@@ -13,7 +13,6 @@
     --services-background: #d8dce6;
     --navbarhover-color: #e00f41;
     --navbar-color: #ab0032;
-    --gradient-a: linear-gradient(90deg, #e00f41 0%, #e94250 95%);
 }
 .dark-theme{
     --primary-color: #262934;
@@ -53,7 +52,7 @@ nav p{
     font-size: 30px;
     line-height: 55px;
     float: left;
-    padding: 0px 10px;
+    padding: 0px 7px;
 }
 nav ul{
     float: left;
@@ -105,12 +104,12 @@ span{
     -webkit-background-clip: text;
     color: transparent;
 }
+
 gr1{
-    background: var(--gradient-a);
+    background: linear-gradient(90deg, #e00f41 0%, #e94250 95%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    transition: background 0.15s;
 }
 
 .container{
@@ -159,7 +158,6 @@ gr1{
     background: var(--services-color);
     color: #fff;
     transform: scale(1.05);
-    --gradient-a: linear-gradient(90deg, #7bdbd3 0%, #50bad4 95%);
 }
 .service:hover i{
     color: #fff;
