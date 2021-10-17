@@ -160,14 +160,14 @@ gr1 {
     color: var(--services-text-color);
     cursor: pointer;
     background: var(--services-background);
-    transition: transform 0.15s, background 0.15s;
+    transition: transform 0.1s, background 0.1s;
 }
 
 .service i {
     font-size: 40px;
     margin-bottom: 10px;
     color: var(--services-color);
-    transition: color 0.15s;
+    transition: color 0.1s;
 }
 
 .service h2 {
@@ -178,7 +178,7 @@ gr1 {
 .service:hover {
     background: var(--services-color);
     color: #fff;
-    transform: scale(1.05);
+    transform: translateY(-10px);
     --gradient-a: linear-gradient(90deg, #7bdbd3 0%, #50bad4 95%);
 }
 
