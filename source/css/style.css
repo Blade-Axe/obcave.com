@@ -8,22 +8,22 @@
 :root {
     --primary-color: #edf2fc;
     --secondary-color: #edf2fc;
-    --services-color: #ab0032;
+    --services-color: #2d3146;
     --services-text-color: #262934;
     --services-background: #d8dce6;
-    --navbarhover-color: #e00f41;
-    --navbar-color: #ab0032;
-    --gradient-a: linear-gradient(90deg, #e00f41 0%, #e94250 95%);
+    --navbarhover-color: #2d3146;
+    --navbar-color: #2d3146;
+    --gradient-a: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
 }
 
 .dark-theme {
-    --primary-color: #262934;
+    --primary-color: #24283b;
     --secondary-color: #edf2fc;
-    --services-color: #ab0032;
+    --services-color: #1b1e2e;
     --services-text-color: #edf2fc;
-    --services-background: #1c1e25;
-    --navbarhover-color: #e00f41;
-    --navbar-color: #ab0032;
+    --services-background: #2d3146;
+    --navbarhover-color: #1b1e2e;
+    --navbar-color: #1b1e2e;
 }
 
 #theme-switch-icon {
@@ -113,7 +113,7 @@ nav ul li ul li a:hover {
 }
 
 span {
-    background: linear-gradient(90deg, rgba(179,98,106,1) 0%, rgba(232,150,24,1) 95%);
+    background: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -179,7 +179,7 @@ gr1 {
     background: var(--services-color);
     color: #fff;
     transform: translateY(-10px);
-    --gradient-a: linear-gradient(90deg, #7bdbd3 0%, #50bad4 95%);
+    --gradient-a: linear-gradient(90deg, #73daca 0%, #2ac3de 95%);
 }
 
 .service:hover i {
