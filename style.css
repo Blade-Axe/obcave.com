@@ -39,7 +39,7 @@ body
 nav
 {
     width: 100%;
-    height: 60px;
+    height: 61px;
     background: var(--navbar-color);
     text-align: right;
     font-size: 50px;
@@ -73,7 +73,7 @@ nav ul li a{
     text-decoration: none;
 }
 nav ul li a:hover{
-    display: block;
+    display:block;
     background-color: var(--navbarhover-color);
     box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
 }
@@ -81,8 +81,9 @@ nav ul li ul{
     display: none;
     position: absolute;
     background-color: var(--navbar-color);
-    padding: 10px;
+    padding: 5px;
     border-radius: 0px 0px 4px 4px;
+    z-index: 1;
 }
 nav ul li:hover ul{
     display: block;
