@@ -8,7 +8,7 @@ let theme = localStorage.getItem("theme");
 
 if (theme == "dark") {
     document.body.classList.toggle("dark-theme");
-        icon.src = "images/icons/sun.png";
+        icon.src = "images/icons/moon.png";
 }
 
 icon.onclick = function() {
@@ -18,11 +18,11 @@ icon.onclick = function() {
     if(document.body.classList.contains("dark-theme")){
 
         localStorage.setItem("theme", "dark");
-        icon.src = "images/icons/sun.png";
+        icon.src = "images/icons/moon.png";
 
     } else {
         
         localStorage.setItem("theme", "light");
-        icon.src = "images/icons/moon.png";
+        icon.src = "images/icons/sun.png";
     }
 }
