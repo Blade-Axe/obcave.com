@@ -3,25 +3,22 @@
 # obcave.com
 
 obcave is a small project that aims to provide:
-
 - at least a terrabyte of free storage
 - a link to the obphi music bot 
 - a collection of all obcave members music
 
-this repository contains the html, css, js and any other files the website may need.
-
 ## Features to be added:
-
-- Theme selector
-- Music uploader
-- Music displayer/player
-- Rating system
-- Live chat
-- More site customisaton
-- profiles?
+- theme selector
+- music uploader
+- music displayer/player
+- rating system
+- live chat
+- more site customisaton
+- ~~profiles?~~ bad idea no no no for the love of god i cannot be arsed to make an sql database of profiles no god no please no no no no no
 
 ## Current Project Members:
 
 BladeAxe, Kryzp, AKA_gamersensi, Izooc
 
 ###### (Copywrite 2021 - obcave group)
+wow we even misspelled copyright wow
