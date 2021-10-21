@@ -46,7 +46,7 @@
     <p><span>ob</span>cave │</p>
     <ul>
         <li><a href="index.html">home</a></li>
-        <li><a href="discord.html">ob discord</a></li>
+        <li><a href="#">obchatter</a></li>
         <li><a href="#">music <i class="fas fa-angle-down"></i></a>
             <ul>
                 <li><a href="#">AKA</a></li>
@@ -58,26 +58,23 @@
         <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
     </ul>
     <div class="ham">
-    <strong id="mobile-menu-btn"><span><i class="fas fa-bars"></span></i></strong> 
+    <strong id="mobile-menu-btn">&#9776</i></strong> 
     </div>       
     <img src="icons/moon.png" id="theme-switch-icon">
 </nav>
 
 
 <div class="mobile-menu">
-    <ul>
-        <li><a href="index.html">home</a></li>
-        <li><a href="discord.html">ob discord</a></li>
-        <li><a href="#">music <i class="fas fa-angle-down"></i></a>
-            <ul>
-                <li><a href="#">AKA</a></li>
-                <li><a href="#">BladeAxe</a></li>
-                <li><a href="#">Amplified-Rythm</a></li>
-            </ul>
-        </li>
-        <li><a href="#">storage</a></li>
-        <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
-    </ul>
+    <a href="index.html">home</a></li>
+    <a href="#">obchatter</a></li>
+    <a href="#">music <i class="fas fa-angle-down"></i></a>
+    <div class="dropdownmobile">
+        <a href="#">AKA</a></li>
+        <a href="#">BladeAxe</a></li>
+        <a href="#">Amplified-Rythm</a></li>
+    </div>
+    <a href="#">storage</a></li>
+    <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
 </div>
 
 <!-- Content -->
@@ -87,7 +84,7 @@
         <div class="service">
             <i class="fas fa-music"></i>
             <h2>our <gr1>music</gr1></h2>
-            <p>a collection U+f0c9 of all the music from aka, bladeaxe and amplified rythm</p>
+            <p>a collection of all the music from aka, bladeaxe and amplified rythm</p>
         </div>
         <div class="service">
             <i class="fas fa-database"></i>
@@ -119,10 +116,10 @@
     mobileMenuBtn.addEventListener("click", () => {
       if (mobileMenu.style.display === "none") {
         mobileMenu.style.display = "flex";
-        mobileMenuBtn.innerHTML = "Close";
+        mobileMenuBtn.innerHTML = "&#10799";
       } else {
         mobileMenu.style.display = "none";
-        mobileMenuBtn.innerHTML = "";
+        mobileMenuBtn.innerHTML = "&#9776";
       }
     });
     

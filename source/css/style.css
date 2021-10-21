@@ -14,6 +14,7 @@
     --navbarhover-color: #151231;
     --navbar-color: #2d3146;
     --gradient-a: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
+    --mobilemenudropdowntext: #5ac48f;
     --box-shadow: rgba(0,0,0,0.2);
 }
 
@@ -25,6 +26,8 @@
     --services-background: #2d3146;
     --navbarhover-color: #2d202d;
     --navbar-color: #1b1e2e;
+    --gradient-a: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
+    --mobilemenudropdowntext: #8bda73;
     --box-shadow: rgba(0,0,0,0.2);
 }
 
@@ -121,23 +124,13 @@ nav ul li ul li a:hover {
     display: none;
 }
 .mobile-menu {
-    color: white;
     display: none;
     position: relative;
-    right: 0;
-    padding: 10px;
-    padding: 50px;
+    padding: 30px;
     background-color: var(--services-color);
-    text-decoration: none;
-    text-align: left;
 }
-.mobile-menu ul li a{
-    text-decoration: none;
-    text-align: left;
-}
-
-.mobile-menu ul li a:hover{
-    background-color: var(--navbarhover-color);
+.dropdownmobile{
+    display: none;
 }
   
 @media (max-width: 790px) {
@@ -168,8 +161,32 @@ nav ul li ul li a:hover {
     .mobile-menu {
       display: none;
       flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+    }
+    .mobile-menu a{
+        text-decoration: none;
+        justify-content: space-around;
+        padding: 20px;
+        align-items: left;
+        color: var(--secondary-color);
+        font-size: 20px;
+    }
+    .mobile-menu a:hover{
+        display: block;
+        text-decoration: var(--gradient-a);
+        color: var(--mobilemenudropdowntext);
+        box-shadow: 0px 8px 16px 0px var(--box-shadow);
+    }
+    .dropdownmobile a:hover{
+        display: block;
+        text-decoration: var(--gradient-a);
+        color: var(--mobilemenudropdowntext);
+        box-shadow: 0px 8px 16px 0px var(--box-shadow);
+        text-decoration: none;
+        justify-content: space-around;
+        padding: 20px;
+        align-items: left;
+        color: var(--secondary-color);
+        font-size: 20px;
     }
 }
 
@@ -248,5 +265,10 @@ gr1 {
 }
 .ham{
     float: left;
+    font-family: Arial;
+    color: var(--secondary-color);
+    font-size: 50px;
+    line-height: 55px;
+    padding: 4px 1px;
 }
 
