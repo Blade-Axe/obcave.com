@@ -11,6 +11,7 @@
 
 <!-- css and decoration -->
 <link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
 
 <!-- webicons -->
@@ -56,8 +57,25 @@
         <li><a href="#">storage</a></li>
         <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
     </ul>
+    <div class="ham">
+    <strong id="mobile-menu-btn">&#9776</i></strong> 
+    </div>       
     <img src="icons/moon.png" id="theme-switch-icon">
 </nav>
+
+
+<div class="mobile-menu">
+    <a href="index.html">home</a></li>
+    <a href="#">obchatter</a></li>
+    <a href="#">music <i class="fas fa-angle-down"></i></a>
+    <div class="dropdownmobile">
+        <a href="#">AKA</a></li>
+        <a href="#">BladeAxe</a></li>
+        <a href="#">Amplified-Rythm</a></li>
+    </div>
+    <a href="#">storage</a></li>
+    <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
+</div>
 
 <!-- Content -->
 <div class="container">
@@ -87,7 +105,26 @@
 </div>
 
 <!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="scripts/theme_mgr.js"></script>
+
+<script>
+
+    var mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+    var mobileMenu = document.querySelector(".mobile-menu");
+    
+    mobileMenuBtn.addEventListener("click", () => {
+      if (mobileMenu.style.display === "none") {
+        mobileMenu.style.display = "flex";
+        mobileMenuBtn.innerHTML = "&#10799";
+      } else {
+        mobileMenu.style.display = "none";
+        mobileMenuBtn.innerHTML = "&#9776";
+      }
+    });
+    
+    </script>
+
 
 
 </body>
