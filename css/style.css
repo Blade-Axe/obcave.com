@@ -287,12 +287,20 @@ gr1 {
 
 .service:hover {
     background: var(--services-color);
-    color: #fff;
+    color: var(--services-text-color);
     transform: translateY(-10px);
     --gradient-a: linear-gradient(90deg, #73daca 0%, #2ac3de 95%);
     --gradient-b: linear-gradient(90deg, #73daca 0%, #2ac3de 95%);
 }
-
+.service:hover p{
+    color: #fff;
+}
+.service:hover h2{
+    color: #fff;
+}
+.service:hover .breaker{
+    color: #fff;
+}
 .service:hover i {
     color: #fff;
 }
@@ -304,4 +312,20 @@ gr1 {
     line-height: 55px;
     padding: 4px 1px;
 }
+.link{
+    padding: 10px;
+    font-size: 40px;
+    color: #fff;
+}
+.link i{
+    padding: 10px;
+    font-size: 40px;
+    color: #2ac3de;
+}
+.link i:hover{
+    size: 50px;
+    color: #e27713;
+    text-orientation: ;
+}
+
 
