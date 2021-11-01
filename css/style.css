@@ -325,7 +325,10 @@ gr1 {
 .link i:hover{
     size: 50px;
     color: #e27713;
-    text-orientation: ;
+}
+.discord{
+    padding-top: 10px;
+    text-align: center;
 }
 
 
