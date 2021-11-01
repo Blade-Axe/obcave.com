@@ -330,5 +330,10 @@ gr1 {
     padding-top: 10px;
     text-align: center;
 }
-
+.container p{
+    padding-bottom: 10px;
+    display: block;
+    text-align: center;
+    color: var(--services-text-color);
+}
 
