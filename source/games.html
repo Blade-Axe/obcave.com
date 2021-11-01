@@ -56,7 +56,7 @@
         </li>
         <li><a href="#">storage</a></li>
         <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
-        <li><a href="games.html">games</a></li>
+        <li><a href="#">games</a></li>
     </ul>
     <div class="ham">
     <strong id="mobile-menu-btn">&#9776</i></strong> 
@@ -78,31 +78,23 @@
     <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
 </div>
 
-<!-- Content -->
-<div class="container">
-    <h1><span>ob</span>cave</h1>
-    <div class="row">
-        <div class="service">
-            <i class="fas fa-music"></i>
-            <h2>our <gr1>music</gr1></h2>
-            <p>a collection of all the music from aka, bladeaxe and amplified rythm</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-database"></i>
-            <h2>our <gr1>storage</gr1></h2>
-            <p>coming soon tm</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-microphone"></i>
-            <h2>our <gr1>music bot</gr1></h2>
-            <p>obphi is a cool little music bot! It aims to provide a few cool features to your server, for example the ability to play .mp3 and .wav files.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-dumpster-fire"></i>
-            <h2>our <gr1>garbage</gr1></h2>
-            <p>yesyesiwant mecdonals chicken mc nuggy</p>
-        </div>
-    </div>
+<script>
+    window.onload = function() {
+        var thegamelink = "https://play.idevgames.co.uk/embed/minimal-tower-defense";
+        var ref = document.referrer;
+        var theurl = document.referrer;
+        ref = ref.substring(ref.indexOf("://") + 3);
+        ref = ref.split("/")[0];
+        if(ref == "my-ga.me"){
+        theurl = "true"
+        } else {
+            theurl = "false"
+        } 
+        document.getElementById("embededGame").src = thegamelink+"/"+theurl+"?url="+window.location.href;
+    }
+</script>
+<div style="position: relative;height: 0;overflow: hidden;padding-bottom: 56.25%;">
+    <iframe id="embededGame" src="https://play.idevgames.co.uk/embed/minimal-tower-defense" scrolling="no" seamless="seamless" frameBorder="0" style="position: absolute;top:0;left: 0;width: 100%;height: 100%;">Browser not compatible.</iframe>
 </div>
 
 <!-- scripts -->
