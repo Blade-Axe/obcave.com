@@ -46,7 +46,12 @@
     <p><span>ob</span>cave │</p>
     <ul>
         <li><a href="index.html">home</a></li>
-        <li><a href="discord.html">ob discord</a></li>
+        <li><a href="#">ob stuff <i class="fas fa-angle-down"></i></a>
+            <ul>
+                <li><a href="discord.html">ob discord</a></li>
+                <li><a href="games.html">games</a></li>
+            </ul>
+        </li>
         <li><a href="#">music <i class="fas fa-angle-down"></i></a>
             <ul>
                 <li><a href="#">AKA</a></li>
@@ -66,16 +71,21 @@
 
 
 <div class="mobile-menu">
-    <a href="index.html">home</a></li>
-    <a href="discord.html">ob discord</a></li>
-    <a href="#">music <i class="fas fa-angle-down"></i></a>
+    <a href="index.html">home</a>
+    <a href="#">ob stuff <i class="fas fa-angle-down"></i>
     <div class="dropdownmusic">
-        <a href="#">AKA</a></li>
-        <a href="#">BladeAxe</a></li>
-        <a href="#">Amplified-Rythm</a></li>
+        <a href="discord.html">ob discord</a>
+        <a href="games.html">games</a>
     </div>
-    <a href="#">storage</a></li>
+    <a href="#">music <i class="fas fa-angle-down"></i>
+    <div class="dropdownmusic">
+        <a href="#">AKA</a>
+        <a href="#">BladeAxe</a>
+        <a href="#">Amplified-Rythm</a>
+    </div>
+    <a href="#">storage</a>
     <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">obphi bot <i class="fas fa-external-link-alt"></i></a>
+    <a href="#">login</a>
 </div>
 
 <!-- Content -->
@@ -97,25 +107,7 @@
 <!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="scripts/theme_mgr.js"></script>
-
-<script>
-
-    var mobileMenuBtn = document.querySelector("#mobile-menu-btn");
-    var mobileMenu = document.querySelector(".mobile-menu");
-    
-    mobileMenuBtn.addEventListener("click", () => {
-      if (mobileMenu.style.display === "none") {
-        mobileMenu.style.display = "flex";
-        mobileMenuBtn.innerHTML = "&#10799"; //cross
-      } else {
-        mobileMenu.style.display = "none";
-        mobileMenuBtn.innerHTML = "&#9776"; //hamburger menu
-      }
-    });
-    
-</script>
-
-
+<script src="scripts/mobilemenu.js"></script>
 
 </body>
 </html>
