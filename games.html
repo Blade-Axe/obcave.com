@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- website name -->
-<title>obcave</title>
+<title>cave</title>
 
 <!-- css and decoration -->
 <link rel="stylesheet" href="css/style.css">
@@ -15,14 +15,14 @@
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
 
 <!-- webicons -->
-<link rel="apple-touch-icon" sizes="57x57" href="images/icons/ob/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="images/icons/ob/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="images/icons/ob/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="images/icons/ob/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="60x60" href="images/icons/ob/apple-touch-icon-60x60.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="images/icons/ob/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="images/icons/ob/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="images/icons/ob/apple-touch-icon-152x152.png" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/ob/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/ob/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/ob/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/ob/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/icons/ob/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/icons/ob/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/icons/ob/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/icons/ob/apple-touch-icon-152x152.png" />
 <link rel="icon" type="image/png" href="images/icons/ob/favicon-196x196.png" sizes="196x196" />
 <link rel="icon" type="image/png" href="images/icons/ob/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/png" href="images/icons/ob/favicon-32x32.png" sizes="32x32" />
@@ -55,8 +55,8 @@
             </ul>
         </li>
         <li><a href="#">storage</a></li>
-        <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">obphi bot <i class="fas fa-external-link-alt"></i></a></li>
-        <li><a href="login.html">login</a>
+        <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
+        <li><a href="#">games</a></li>
     </ul>
     <div class="ham">
     <strong id="mobile-menu-btn">&#9776</i></strong> 
@@ -67,47 +67,35 @@
 
 <div class="mobile-menu">
     <a href="index.html">home</a></li>
-    <a href="discord.html">ob discord</a></li>
-    <a href="#">music <i class="fas fa-angle-down"></i></a>
-    <div class="dropdownmusic">
+    <a href="#">obchatter</a></li>
+    <a href="#"><music class="html"></music> <i class="fas fa-angle-down"></i></a>
+    <div class="dropdownmobile">
         <a href="#">AKA</a></li>
         <a href="#">BladeAxe</a></li>
         <a href="#">Amplified-Rythm</a></li>
     </div>
     <a href="#">storage</a></li>
-    <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">obphi bot <i class="fas fa-external-link-alt"></i></a>
+    <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">invite obphi music bot</a></li>
 </div>
 
-<!-- Content -->
-
-<div class="container">
-    <h1><span>ob</span>discord</h1>
-<p>If you are having a conversation, or want to see an up to date view, its recommended that you refresh the page.</p>
-<p>Disclaimer: This embed may not work on mobile</p>
-<p>Auto Refresh&nbsp;<input type="checkbox" id="autoRefreshCheckbox" value="true" />
-<script type="text/javascript">
-setInterval(function ()
-{
-    if (document.getElementById('autoRefreshCheckbox').checked)
-    {
-        location.reload();
+<script>
+    window.onload = function() {
+        var thegamelink = "https://play.idevgames.co.uk/embed/minimal-tower-defense";
+        var ref = document.referrer;
+        var theurl = document.referrer;
+        ref = ref.substring(ref.indexOf("://") + 3);
+        ref = ref.split("/")[0];
+        if(ref == "my-ga.me"){
+        theurl = "true"
+        } else {
+            theurl = "false"
+        } 
+        document.getElementById("embededGame").src = thegamelink+"/"+theurl+"?url="+window.location.href;
     }
-}, 10000); // interval is in milliseconds
-</script></p>
-<div class="discord">
-<widgetbot
-  server="904631493291294720"
-  channel="904631928530022411"
-  width="1200"
-  height="1000"
-></widgetbot>
-<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+</script>
+<div style="position: relative;height: 0;overflow: hidden;padding-bottom: 40%;">
+    <iframe id="embededGame" src="https://play.idevgames.co.uk/embed/minimal-tower-defense" scrolling="no" seamless="seamless" frameBorder="0" style="position: absolute;top:0;left: 0;width: 100%;height: 100%;">Browser not compatible.</iframe>
 </div>
-
-</div>
-
-
-
 
 <!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -121,14 +109,14 @@ setInterval(function ()
     mobileMenuBtn.addEventListener("click", () => {
       if (mobileMenu.style.display === "none") {
         mobileMenu.style.display = "flex";
-        mobileMenuBtn.innerHTML = "&#10799"; //cross
+        mobileMenuBtn.innerHTML = "&#10799";
       } else {
         mobileMenu.style.display = "none";
-        mobileMenuBtn.innerHTML = "&#9776"; //hamburger menu
+        mobileMenuBtn.innerHTML = "&#9776";
       }
     });
     
-</script>
+    </script>
 
 
 
