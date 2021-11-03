@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- website name -->
-<title>obcave - chat</title>
+<title>obcave - public</title>
 
 <!-- css and decoration -->
 <link rel="stylesheet" href="css/style.css">
@@ -89,27 +89,38 @@
 </div>
 
 <!-- Content -->
+
 <div class="container">
-    <h1><span>ob</span>chat</h1>
-    <div class="row">
-        <div class="service">
-            <a href="publicdiscord.html">
-            <i class="fas fa-lock-open"></i>
-            <h2>ob <gr1>public</gr1></h2>
-            <p>a completely un-moderated, un-filtered, live chat experience</p>
-            <p><strong>beware</strong></p>
-        </a>
-        </div>
-        <div class="service">
-            <i class="fas fa-lock"></i>
-            <h2>ob <gr1>private</gr1></h2>
-            <p>coming soon tm</p>
-            <p><strong>requires an account</strong></p>
-        </div>
-    </div>
+    <h1><span>ob</span>discord</h1>
+    <h2><strong>PUBLIC CHAT</strong></h2>
+<p>If you are having a conversation, or want to see an up to date view, its recommended that you refresh the page.</p>
+<p>Disclaimer: This embed may not work on mobile</p>
+<p>Auto Refresh&nbsp;<input type="checkbox" id="autoRefreshCheckbox" value="true" />
+<script type="text/javascript">
+setInterval(function ()
+{
+    if (document.getElementById('autoRefreshCheckbox').checked)
+    {
+        location.reload();
+    }
+}, 10000); // interval is in milliseconds
+</script></p>
+<div class="discord">
+<widgetbot
+  server="904631493291294720"
+  channel="904631928530022411"
+  width="800"
+  height="600"
+></widgetbot>
+
+<div class="hero">
+<a href="discord.html" class="hero-btn">go back</a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+</div>
 
+</div>
 
 
 
