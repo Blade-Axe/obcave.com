@@ -1,0 +1,11 @@
+<?php
+    $report_report_style = '';
+    $report_unreport_style = '';
+    if( $music->track_reported === false ){
+        $report_unreport_style = 'visibility: hidden;display: none;';
+    }else{
+        $report_report_style = 'visibility: hidden;display: none;';
+    }
+?>
+<a href="javascript:void(0);" style="<?php echo $report_report_style;?>" onclick="$('#report_track_id').val('{{t_id}}');" class="track_report" data-track-id="{{t_id}}" rel="nofollow" data-toggle="modal" data-target="#report_track" data-uid="{{u_id}}">{{LANG Report}}</a>
+<a href="javascript:void(0);" style="<?php echo $report_unreport_style;?>" class="track_unreport" data-uid="{{u_id}}" onclick="UnReportTrack('{{t_id}}', '{{u_id}}');" data-track-id="{{t_id}}">{{LANG UnReport}}</a>

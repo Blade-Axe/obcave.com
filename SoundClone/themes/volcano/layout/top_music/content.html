@@ -1,0 +1,107 @@
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<center><?php echo GetAd('header');?></center>
+		<div class="page_padding">
+			<!-- Top Albums -->
+			<div class="sq_music_tracks mb-60">
+				<h2 class="home_widget_title home_big_title">
+					{{LANG Top Albums}}
+					<div class="slide_btns">
+						<div class="top_almbs_btn"></div>
+					</div>
+				</h2>
+				<div class="owl-carousel owl-theme sq_track_slider top_albums_lists_pag mus_top_albms">
+					{{TOP_ALBUMS}}
+					<div class="track_list">
+						<div class="track empty">
+							<div class="cover_art">
+								<a href="{{LINK top_music_album}}" data-load="top_music_album">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.47,4.35L20.13,3.79V12.82L22.56,6.96C22.97,5.94 22.5,4.77 21.47,4.35M1.97,8.05L6.93,20C7.24,20.77 7.97,21.24 8.74,21.26C9,21.26 9.27,21.21 9.53,21.1L16.9,18.05C17.65,17.74 18.11,17 18.13,16.26C18.14,16 18.09,15.71 18,15.45L13,3.5C12.71,2.73 11.97,2.26 11.19,2.25C10.93,2.25 10.67,2.31 10.42,2.4L3.06,5.45C2.04,5.87 1.55,7.04 1.97,8.05M18.12,4.25A2,2 0 0,0 16.12,2.25H14.67L18.12,10.59"></path></svg>
+								</a>
+							</div>
+							<div class="track_info">
+								<a href="{{LINK top_music_album}}" data-load="top_music_album"><span class="title">{{LANG See All}}</span></a>
+								<a href="{{LINK top_music_album}}" data-load="top_music_album"><span class="artist">{{LANG Albums}}</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Top Albums -->
+			
+			<!-- Top Songs -->
+			<div class="row">
+				<div class="col-md-8">
+					<div class="sq_music_tracks mb-60">
+						<h2 class="home_widget_title home_big_title"> {{LANG Top Songs}}
+							<div class="slide_btns">
+								<a href="{{LINK top-genres}}" data-load="top-genres">{{LANG Show All}}</a>
+							</div>
+						</h2>
+						<div class="short_list_cont albm_song_listz top_dic_son_listz">
+							<div class="short_list_card">
+								<ul class="s_list_songs">
+									{{TOP_FIRST_6}}
+									{{TOP_SECOND_6}}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<h2 class="home_widget_title home_big_title">
+						{{LANG trending_now}}
+						<div class="slide_btns">
+							<div class="top__trends_almbs_btn"></div>
+						</div>
+					</h2>
+					<div class="owl-carousel owl-theme sq_music_tracks mus_top_trend_albms">
+						{{TOP_ALBUMS}}
+					</div>
+				</div>
+			</div>
+			<!-- End Top Songs -->
+		</div>
+	</div>
+</div>
+
+<script>
+$(function () {
+	$(".mus_top_albms").owlCarousel({
+		margin:0,
+		nav: true,
+		dots: false,
+		navContainer: '.top_almbs_btn',
+		slideBy: 2,
+		items:7,
+		responsive:{
+			0:{
+				items:1
+			},
+			260:{
+				items:2
+			},
+			380:{
+				items:3
+			},
+			768:{
+				items:5
+			},
+			992:{
+				items:6
+			},
+			1300:{
+				items:7
+			}
+		}
+	});
+	
+	$(".mus_top_trend_albms").owlCarousel({
+		margin:0,
+		nav: true,
+		dots: false,
+		navContainer: '.top__trends_almbs_btn',
+		items:1,
+	});
+})
+</script>

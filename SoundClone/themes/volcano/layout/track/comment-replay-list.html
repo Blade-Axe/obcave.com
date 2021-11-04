@@ -1,0 +1,29 @@
+<li class="comment_item comment-replay-{{comment_id}}" comment-seconds="{{comment_seconds}}" comment-percentage="{{comment_percentage}}" comment-id="{{comment_id}}" comment-song-id="{{comment_song_id}}">
+    <div class="comm_innr">
+        <a class="comment_avatar" href="<?php echo $data["USER_DATA"]->url;?>" data-load="<?php echo $data["USER_DATA"]->username;?>">
+            <span style="background-image: url(<?php echo $data["USER_DATA"]->avatar;?>);" aria-role="img"></span>
+        </a>
+
+        <div class="comment_content">
+			<span class="comment_username">
+				<a href="<?php echo $data["USER_DATA"]->url;?>" data-load="<?php echo $data["USER_DATA"]->username;?>"><?php echo $data["USER_DATA"]->username;?></a>
+			</span>
+            <div class="comment_body">
+                <p>{{comment_text}}</p>
+            </div>
+        </div>
+        <div class="comment_meta">
+            <span class="comment_published">
+				<span class="ajax-time" title="{{tcomment_posted_time}}">{{comment_posted_time}}</span>
+			</span>
+            <?php if(IS_LOGGED){?>
+                <div class="comment_controls">
+                    <?php if ($data['owner'] == true) { ?>
+                        <a href="javascript:void(0);" class="btn" rel="nofollow" title="{{LANG Delete Comment}}" aria-role="button" onclick="$('#delete-comment-replay').attr('data-id', '{{comment_id}}')" data-toggle="modal" data-target="#delete-comment-replay"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg></a>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
+</li>

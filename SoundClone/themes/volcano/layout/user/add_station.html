@@ -1,0 +1,89 @@
+<div class="content">
+	<div class="ds_add_radio_usr">
+		<p>{{LANG Search for stations}}</p>
+		<div>
+			<input type="text" name="station_keyword" id="station_keyword" class="form-control" placeholder="Rock">
+			<button class="btn btn-primary btn-mat" id="btn_search_stations">{{LANG Search}}</button>
+		</div>
+	</div>
+	<div class="sq_music_tracks"><div class="sq_track_slider no-slider ds_add_radio_addstat" id="station_result"></div></div>
+</div>
+
+<script>
+$(function () {
+    $('#btn_search_stations').click(function(event) {
+        event.preventDefault();
+        let search_stations = $('#station_keyword').val();
+        if( search_stations.length < 3 ){
+            alert('{{LANG Please enter more than 3 characters.}}');
+            return false;
+        }
+        $('#btn_search_stations').prop('disabled', true );
+        $('#btn_search_stations').text('{{LANG Please wait...}}');
+        $('#search_stations_loader').removeClass('hidden');
+        let postForm = new FormData();
+            postForm.append( 'keyword', search_stations );
+        $.ajax({
+            type: 'POST',
+            url: '{{CONFIG ajax_url}}/stations/get_stations?hash_id=' + $('.main_session').val(),
+            data: postForm,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                if (data.status == 200) {
+                    $('#btn_search_stations').prop('disabled', false );
+                    $('#btn_search_stations').text('{{LANG Search}}');
+                    $('#search_stations_loader').addClass('hidden');
+                    $('#station_keyword').val('');
+                    $('#station_keyword').focus();
+                    $('#station_result').html(data.html);
+                } else if (data.status == 400) {
+                    alert(data.message);
+                } else {
+                    alert("{{LANG Error found while search stations, please try again later.}}");
+                }
+                $('#btn_search_stations').prop('disabled', false );
+                $('#btn_search_stations').text('{{LANG Search}}');
+                $('#search_stations_loader').addClass('hidden');
+                $('#station_keyword').val('');
+                $('#station_keyword').focus();
+            }
+        });
+    });
+});
+function addStation(elem){
+    var id = $(elem).attr('data-radio-id'),
+        station = $(elem).attr('data-name'),
+        url = $(elem).attr('data-url'),
+        logo = $(elem).attr('data-image'),
+        genre = $(elem).attr('data-genre'),
+        country = $(elem).attr('data-country');
+    $(elem).prop('disabled', true );
+    $(elem).text('{{LANG Please wait...}}');
+    let postForm = new FormData();
+        postForm.append( 'id', id );
+        postForm.append( 'station', station );
+        postForm.append( 'url', url );
+        postForm.append( 'logo', logo );
+        postForm.append( 'genre', genre );
+        postForm.append( 'country', country );
+    $.ajax({
+        type: 'POST',
+        url: '{{CONFIG ajax_url}}/stations/add_stations?hash_id=' + $('.main_session').val(),
+        data: postForm,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            if (data.status == 200) {
+                $('.ds_radio_stat_list[data-id="'+id+'"]').remove();
+            } else if (data.status == 400) {
+                alert("{{LANG You already add this station.}}");
+                $('.ds_radio_stat_list[data-id="'+id+'"]').remove();
+            } else {
+                alert("{{LANG Error found while search stations, please try again later.}}");
+                $('.ds_radio_stat_list[data-id="'+id+'"]').remove();
+            }
+        }
+    });
+}
+</script>

@@ -1,0 +1,55 @@
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<div class="page_padding">
+			<!-- Playlist Songs -->
+				<div class="row mb-60">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="album_songs">
+							<div class="album_poster_info">
+								<div class="al_art">
+									<div class="al_art_img" style="background-image: url({{t_thumbnail}});"></div>
+								</div>
+								<div>
+									<h2 class="al_name"><a href="{{LINK playlist/{{t_uid}}}}" data-load="playlist/{{t_uid}}">{{t_title}}</a></h2>
+									<span class="al_artist"><a href="{{USER url}}" data-load="{{USER username}}">{{USER name}}</a></span>
+									<p class="text-center al_add_info">{{t_songs}} {{LANG Songs}} • {{t_date}}</p>
+									<div class="play_btn">
+										<button class="btn btn-primary btn-mat" onclick="playPlayListSongs({{t_id}})"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg> {{LANG Play}}</button>
+										<span class="dropdown">
+											<button class="btn btn-primary-rev btn-mat" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" /></svg></button>
+											<div class="dropdown-menu dropdown-menu-right mat-dropdown">
+												<ul class="list-unstyled mb-0">
+													<li><a href="javascript:void(0);" onclick="getPlayListShareForm({{t_id}})">{{LANG Share}}</a></li>
+													<?php if (IS_LOGGED) { ?>
+													<?php if ($music->playlist->user_id == $music->user->id) { ?>
+													<li><a href="{{LINK my_playlists}}" data-load="my_playlists">{{LANG Edit}}</a></li>
+													<?php } ?>
+													<?php } ?>
+												</ul>
+											</div>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr class="albm_song_hr">
+						<div class="short_list_cont albm_song_listz">
+							<div class="short_list_card wide_page_songs album_play_song_lists">
+								<ul class="s_list_songs">
+									{{html_list}}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<!-- Related Playlist -->
+							<!-- <?php include('single-album/related.php') ?> -->
+						<!-- End Related Playlist -->
+					</div>
+                </div>
+			<!-- End Playlist Songs -->
+		</div>
+	</div>
+</div>
+<?php echo loadPage('modals/delete-playlist-song'); ?>

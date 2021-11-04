@@ -1,0 +1,38 @@
+<div class="col-md-6 p-0">
+
+    <div class="form-group mat_input">
+        <label class="col-md-12" for="<?php echo $data['fid'];?>"><?php echo $data['name']; ?></label>
+        <div class="col-md-12">
+            <?php
+                $fid = '';
+                if (!empty($music->setting_fields[$data['fid']])) {
+                    $fid = $music->setting_fields[$data['fid']];
+                }
+                if( isset( $_GET[ $data['fid'] ] ) && !empty( $_GET[ $data['fid'] ] ) ){
+                    $fid = Secure( $_GET[ $data['fid'] ] );
+                }
+
+                 if ($data['select_type'] == 'yes') {
+                    $options = @explode(',', $data['type']); ?>
+                        <select name="<?php echo $data['fid'];?>" class="form-control">
+                            <?php if( isset( $data['issearch'] ) ){ ?> <option value=""><?php echo lang('all');?></option> <?php } ?>
+                            <?php
+                                foreach ($options as $key => $value) {
+                                    $selected = (($key + 1) == $fid) ? 'selected' : '';
+                                ?>
+                                    <option value="<?php echo $key + 1;?>" <?php echo $selected;?>><?php echo $value;?></option>
+                            <?php } ?>
+                        </select>
+            <?php } else {
+                if ($data['type'] == 'textbox') { ?>
+
+            <input id="<?php echo $data['fid'];?>" name="<?php echo $data['fid'];?>" type="text" value="<?php echo $fid?>">
+            <?php } else if ($data['type'] == 'textarea') {?>
+            <textarea class="form-control" id="<?php echo $data['fid'];?>" name="<?php echo $data['fid'];?>" cols="20" rows="3"><?php echo br2nl($fid);?></textarea>
+            <?php } } ?>
+            <?php if( !isset( $data['issearch'] ) ){ ?>
+            <span class="help-block"><?php echo $data['description'];?></span>
+            <?php } ?>
+        </div>
+    </div>
+</div>

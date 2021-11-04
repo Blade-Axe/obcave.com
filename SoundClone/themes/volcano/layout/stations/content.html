@@ -1,0 +1,27 @@
+<div class="sq_music_tracks">
+	<div class="sq_track_slider no-slider" id="new-music">{{STATIONS}}</div>
+	<?php if ($music->stations > 500) { ?>
+		<div class="text-center see_all">
+			<a href="javascript:void(0); loadMore('stations');" id="load-more-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg> {{LANG Load More}}</a>
+		</div>
+	<?php } ?>
+</div>
+
+<script>
+    function deleteStation(id){
+        let postForm = new FormData();
+            postForm.append( 'id', id );
+        $.ajax({
+            type: 'POST',
+            url: '{{CONFIG ajax_url}}/delete-song?id='+id+'&hash_id=' + $('.main_session').val(),
+            data: postForm,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                if (data.status == 200) {
+                    $('.track_list[data-id="' + id + '"]').remove();
+                }
+            }
+        });
+    }
+</script>

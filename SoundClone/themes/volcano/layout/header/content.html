@@ -1,0 +1,47 @@
+<header class="vlc_no_usr_hdr">
+	<div class="head_menu" id="open_slide">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+	</div>
+	<div class="head_search">
+		{{site_search_bar}}
+	</div>
+	<div class="mu_left_hdr_part">
+		<div class="left_hdr_btns" id="open_search">
+			<a href="javascript:void(0);" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.3198574,14.9056439 L21.7071068,20.2928932 L20.2928932,21.7071068 L14.9056439,16.3198574 C13.5509601,17.3729184 11.8487115,18 10,18 C5.581722,18 2,14.418278 2,10 C2,5.581722 5.581722,2 10,2 C14.418278,2 18,5.581722 18,10 C18,11.8487115 17.3729184,13.5509601 16.3198574,14.9056439 Z M10,16 C13.3137085,16 16,13.3137085 16,10 C16,6.6862915 13.3137085,4 10,4 C6.6862915,4 4,6.6862915 4,10 C4,13.3137085 6.6862915,16 10,16 Z"/></svg> {{LANG search}}</a>
+		</div>
+	</div>
+	<div class="head_logo">
+		<a href="{{LINK }}">
+			<?php if( $music->mode_link == 'day' ){?>
+			<img src="{{CONFIG theme_url}}/img/logo.png" alt="">
+			<?php }else{ ?>
+			<img src="{{CONFIG theme_url}}/img/logo-white.png" alt="">
+			<?php } ?>
+		</a>
+	</div>
+	<div class="mu_right_hdr_part head_user not_loggd_hdrr">
+		<!--<a href="#" data-toggle="modal" data-target="#login_box" class="btn login hide_hd_btn">{{LANG Login}}</a>
+		<?php if($music->config->user_registration == 'on'){?>
+		<a href="#" data-toggle="modal" data-target="#signup_box" class="btn btn-primary btn-mat hide_hd_btn">{{LANG Register}}</a>
+		<?php }?>-->
+		<span class="opts_head_acc dropdown">
+			<svg data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"></path></svg>
+			<div class="dropdown-menu dropdown-menu-right mat-dropdown">
+				<ul class="list-unstyled mb-0">
+					<li><a href="#" data-toggle="modal" data-target="#login_box">{{LANG Login}}</a></li>
+					<?php if($music->config->user_registration == 'on'){?>
+					<li><a href="#" data-toggle="modal" data-target="#signup_box">{{LANG Register}}</a></li>
+					<?php } ?>
+					<li class="divider"></li>
+					<li class="toggle-mode top-header">
+						<label class="switch">
+							<span class="txt"><?php echo $music->mode_text; ?></span>
+							<input type="checkbox" id="night_mode_toggle" data-mode='<?php echo $music->mode_link; ?>'>
+							<span class="slider round"></span>
+						</label>
+					</li>
+				</ul>
+			</div>
+		</span>
+	</div>
+</header>

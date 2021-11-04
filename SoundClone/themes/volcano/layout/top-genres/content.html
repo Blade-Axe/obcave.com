@@ -1,0 +1,35 @@
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<div class="page_padding">
+			<!-- Top Albums -->
+			<div class="sq_music_tracks">
+				<h2 class="home_big_title">{{LANG Top Songs}}</h2>
+				<div class="short_list_cont row top_dic_son_listz">
+					<div class="col-md-4">
+						<div class="top_m_filters mus_cus_side_filtrs">
+							<?php foreach ($music->categories as $key => $category) {?>
+								<div class="filter_list">
+									<div class="filters <?php echo ($music->category_id == $key) ? 'active' : ''?>" style="background: <?php echo getCategoryInfo($key)->color?>">
+										<a href="{{LINK top-genres/<?php echo $key?>}}" data-load="top-genres/<?php echo $key?>">
+											<div class="filters_innr">
+												<div class="f_sec_name">{{LANG Top 50}}</div>
+												<div class="f_name"><?php echo $category?></div>
+											</div>
+										</a>
+									</div>
+								</div>
+							<?php } ?>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="short_list_card">
+							<ul class="s_list_songs home_tp_songs_list mus_tg_tp_songs_list">
+								{{TOP_SONGS}}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

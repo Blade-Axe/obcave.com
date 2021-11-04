@@ -1,0 +1,17 @@
+<div class="ds_track_reviews_list">
+	<div class="avatar">
+		<a href="{{LINK }}<?php echo $data['USER_DATA']->username;?>" data-load="<?php echo $data['USER_DATA']->username;?>">
+			<img src="<?php echo $data['USER_DATA']->avatar;?>" class="td-avatar" alt="user avatar"> 
+		</a>
+	</div>
+	<div class="info">
+		<h3><a href="{{LINK }}<?php echo $data['USER_DATA']->username;?>" data-load="<?php echo $data['USER_DATA']->username;?>"><?php echo $data['USER_DATA']->name;?></a></h3>
+		<time><?php echo time_Elapsed_String($data['TM']);?></time>
+		<div class="rat_strs"><?php
+            for($i = 1; $i <= (int)$data['RATE'] ; $i++){
+                echo '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#ff9900" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>';
+            }
+            ?></div>
+		<p>{{DESC}}</p>
+	</div>
+</div>

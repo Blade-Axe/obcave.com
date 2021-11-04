@@ -1,0 +1,18 @@
+<li class="ma_notifs">
+	<a href="{{n_url}}" data-load="{{n_a_url}}">
+		<div class="avatar">
+			<img src="{{USER avatar}}" alt="User's avatar">
+		</div>
+		<div class="n_detail">
+			<p>
+				<b>{{USER name}}</b>
+				{{n_text}}
+				<div class="ds_track_tag_req">
+					<button class="btn btn-success" onclick="ApproveRequest('{{ID}}')">{{LANG Approve}}</button>
+					<button class="btn btn-danger" onclick="DeclineRequest('{{ID}}')">{{LANG Decline}}</button>
+				</div>
+			</p>
+			<span class="ajax-time" title="{{ns_time}}">{{n_time}}</span>
+		</div>
+	</a>
+</li>

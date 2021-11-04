@@ -1,0 +1,11 @@
+<div class="col-md-6">
+    <div class="mus_home_top_song">
+        <a href="{{url}}" <?php if (empty($music->ajaxLink)) {?>data-load="track/{{audio_id}}" <?php } ?>>
+            <div class="art_song"><img src="{{thumbnail}}"></div>
+            <div class="art_details">
+                <h4>{{title}}</h4>
+                <p>{{USER name}}</p>
+            </div>
+        </a>
+    </div>
+</div>

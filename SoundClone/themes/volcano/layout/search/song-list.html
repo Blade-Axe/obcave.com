@@ -1,0 +1,23 @@
+<div class="col-md-6 song_search_list" data-id="{{SONG id}}">
+	<div class="song_search_list_innr">
+		<div class="avatar">
+			<a href="{{LINK track/{{SONG audio_id}}/play}}" data-load="track/{{SONG audio_id}}/play"><img src="{{SONG thumbnail}}"></a>
+			<span class="duration">{{SONG duration}}</span>
+		</div>
+		<div class="art_details">
+			<h4><a href="{{LINK track/{{SONG audio_id}}/play}}" data-load="track/{{SONG audio_id}}/play">{{SONG title}}</a></h4>
+			<span class="a_name">
+				<a href="{{LINK <?php echo $data['SONG_DATA']->publisher->username;?>}}" data-load="<?php echo $data['SONG_DATA']->publisher->username;?>"><?php echo $data['SONG_DATA']->publisher->name;?></a>
+			</span>
+		</div>
+		<div class="opts_song dropdown">
+			<svg class="dropdown-toggle" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z"></path></svg>
+			<div class="dropdown-menu dropdown-menu-right mat-dropdown">
+				<ul class="list-unstyled mb-0">
+					<li><a href="javascript:void(0)" onclick="getPlayLists(<?php echo $data['SONG_DATA']->id;?>)">{{LANG Add to Playlist}}</a></li>
+					<li><a onclick="getShareModal(<?php echo $data['SONG_DATA']->id;?>, $(this));">{{LANG Share}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+<tr class="ds_ads_table" data-ads-list="{{ID}}">
+    <td width="10%">
+        <div class="ds_toggle_switch" onclick="ToggleAdsStatus('{{ID}}');">
+            <label>
+                <input type="checkbox" {{ACTIVE}} data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" ></path></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" ></path></svg>'>
+            </label>
+        </div>
+    </td>
+    <!--<td width="15%">-->
+        <!--{{TYPE}}-->
+    <!--</td>-->
+    <td width="45%">
+        {{NAME}}
+    </td>
+    <td>
+		<span class="results">{{RESULTS}}</span>
+        <span class="results">{{PR_METHOD}}</span>
+    </td>
+    <td>
+		<span class="spends">
+			{{CURRENCY}}{{SPENT}}
+		</span>
+    </td>
+    <td width="15%">
+		<span class="ds_ads_action" onclick="DeleteAd('{{ID}}');">
+			<a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"></path></svg></a>
+		</span>
+        <span class="ds_ads_action">
+			<a href="{{LINK edit-ad/}}{{ID}}" data-load="edit-ad/{{ID}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 20H6V4H13V9H18V12.1L20 10.1V8L14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H10V20M20.2 13C20.3 13 20.5 13.1 20.6 13.2L21.9 14.5C22.1 14.7 22.1 15.1 21.9 15.3L20.9 16.3L18.8 14.2L19.8 13.2C19.9 13.1 20 13 20.2 13M20.2 16.9L14.1 23H12V20.9L18.1 14.8L20.2 16.9Z"></path></svg></a>
+		</span>
+        <span class="ds_ads_action">
+			<a href="{{LINK ad-analytics/}}{{ID}}" data-load="ad-analytics/{{ID}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z"></path></svg></a>
+		</span>
+    </td>
+</tr>

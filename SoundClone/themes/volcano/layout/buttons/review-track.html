@@ -1,0 +1,10 @@
+<?php
+    $report_report_style = '';
+    $report_unreport_style = '';
+    if( $music->track_reviewed === false ){
+$report_unreport_style = 'visibility: hidden;display: none;';
+}else{
+$report_report_style = 'visibility: hidden;display: none;';
+}
+?>
+<button style="<?php echo $report_report_style;?>" onclick="$('#review_track_id').val('{{t_id}}');$('#review_track_oid').val('{{oid}}');" class="track_review" data-track-id="{{t_id}}" rel="nofollow" title="{{LANG Review Track}}" aria-role="button" data-toggle="modal" data-target="#review_track" data-uid="{{u_id}}">{{LANG Review Track}}</button>

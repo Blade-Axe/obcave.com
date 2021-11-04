@@ -1,0 +1,35 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+            <div class="ma_tabs store_tabs">
+                <ul class="list-unstyled mb-0">
+                    <li class="<?php echo ($music->pageType == 'songs') ? 'active' : ''; ?>">
+                        <a href="{{LINK store/songs}}" data-load="store/songs">{{LANG Songs}}</a>
+                    </li>
+                    <li class="<?php echo ($music->pageType == 'album') ? 'active' : ''; ?>">
+                        <a href="{{LINK store/album}}" data-load="store/album">{{LANG Albums}}</a>
+                    </li>
+                    <?php if( $music->config->artist_sell == 'on' ) { ?>
+                    <li class="<?php echo ($music->pageType == 'top') ? 'active' : ''; ?>">
+                        <a href="{{LINK store/top}}" data-load="store/top">{{LANG Top Seller}}</a>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+					<h2 class="home_big_title">{{LANG Top Songs}}</h2>
+                    <div class="row store_songs mb-60">
+                        {{top_songs}}
+                    </div>
+                    <div class="sq_music_tracks">
+                        <h2 class="home_big_title">{{LANG Top Albums}}</h2>
+                        <div class="sq_track_slider no-slider store_albums">
+                            {{top_album}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

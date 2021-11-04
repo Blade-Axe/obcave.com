@@ -1,0 +1,40 @@
+<div class="col-lg-6 song_list" data-id="{{t_id}}">
+	<div class="song_list_innr">
+	<div class="avatar">
+		<a href="{{t_url}}" data-load="track/{{t_audio_id}}"><img src="{{t_thumbnail}}"></a>
+		<span class="duration" title="Duration">{{t_duration}}</span>
+	</div>
+	<div class="song_right_part">
+		<div class="song_upper">
+			<div class="song_meta_info">
+				<a href="javascript:void(0)" onclick="playSong('{{t_audio_id}}')"><h3>{{t_title}}</h3></a>
+				<a href="{{t_artist_url}}" data-load="{{t_uartist}}"><p>{{t_artist}}</p></a>
+			</div>
+			<div class="song_price_info">
+				<?php if($music->config->artist_sell == 'on'){ ?>
+					<?php if( isTrackPurchased($data['t_id'], $music->user->id) === true ){ ?>
+						<button class="btn btn-default btn-mat" title="{{LANG You have bought this track.}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M0.41,13.41L6,19L7.41,17.58L1.83,12M22.24,5.58L11.66,16.17L7.5,12L6.07,13.41L11.66,19L23.66,7M18,7L16.59,5.58L10.24,11.93L11.66,13.34L18,7Z" /></svg></button>
+					<?php } else { ?>
+						<button class="btn btn-primary btn-mat" onclick="purchaseTrack('{{t_audio_id}}', $(this))"  data-title="{{t_title}}" data-price="{{t_price}}" title="{{LANG Purchase}}">{{CONFIG currency_symbol}}{{t_price}}</button>
+					<?php } ?>
+				<?php } ?>
+			</div>
+		</div>
+		<ul class="song_lower list-unstyled mb-0">
+			<li><span class="fav_song"><?php echo getFavButton($music->songData->id, 'fav-icon');?></span></li>
+			<li><span class="r_time" title="Released on">{{t_posted}}</span></li>
+			<li>
+				<span class="opts_song dropdown">
+					<svg data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z"></path></svg>
+					<div class="dropdown-menu dropdown-menu-right mat-dropdown">
+						<ul class="list-unstyled mb-0">
+							<li><a href="javascript:void(0)" onclick="getPlayLists({{t_id}})">{{LANG Add to Playlist}}</a></li>
+							<li><a onclick="getShareModal('{{t_id}}', $(this));">Share</a></li>
+						</ul>
+					</div>
+				</span>
+			</li>
+		</ul>
+	</div>
+	</div>
+</div>

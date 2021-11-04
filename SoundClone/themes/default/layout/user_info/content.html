@@ -1,0 +1,432 @@
+<html>
+	<head>
+		<title>{{LANG My Information}}</title>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+body {
+	background: #f98f1d;margin: 0;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+header {
+	text-align: center;
+    margin: 70px 0 50px;
+}
+header img {
+	width: 100%;
+    max-width: 240px;
+}
+h2 {
+	font-weight: 400;
+    display: flex;
+    align-items: center;text-transform: capitalize;
+}
+h2 svg {
+color: #2196F3;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+.container {
+	width: 100%;
+    max-width: 1090px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 7px;
+}
+.mt0 {
+    margin-top: 0;
+}
+.mb0 {
+    margin-bottom: 0;
+}
+table {
+	margin: auto;
+    margin-top: 40px;
+	margin-bottom: 70px;
+    width: 100%;
+    max-width: 600px;
+}
+table tr td {
+	width: 50%;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ececec;
+}
+table tr td:first-child {
+	font-weight: 500;
+}
+.users_list {
+	overflow: hidden;
+}
+.users_list .profile-style {
+	width: 20%;
+    float: left;
+    box-shadow: 0 0 0 1px #dedede;
+    padding: 15px;text-align: center;
+}
+.users_list .profile-style .avatar {
+	width: 120px;
+    height: 120px;
+    margin: 0 auto 13px;
+}
+.users_list .profile-style .avatar img {
+	border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.users_list .profile-style > span > a {
+	    color: #020202;
+    text-decoration: none;
+    font-size: 18px;
+}
+.users_list .profile-style .page-website {
+	color: #7d7d7d;
+    font-size: 13px;
+    margin-top: 3px;
+}
+footer {
+	border-top: 1px solid #ddd;
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 12px;color: #777777;
+}
+</style>
+	</head>
+	<body>
+		<header>
+			<a class="brand header-brand" href="{{LINK }}">
+				<img width="130" src="<?php echo $music->config->theme_url ?>/img/icon.png" alt="{{site_title}} Logo">
+			</a>
+		</header>
+		<div class="container">
+			<?php if (!empty($music->user_info['setting'])) { ?>
+				<style>
+					.cover {margin: 0 -20px;height: 363px;}
+					.cover img {width: 100%;height: 363px;object-fit: cover;}
+					.main_avatar {text-align: center;position: relative;margin-top: -65px;}
+					.main_avatar img {border-radius: 50%;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);padding: 3px;background-color: white;width: 150px;height: 150px;object-fit: cover;}
+					.about {text-align: center;}
+					.name {text-align: center;font-weight: 500;margin-bottom: 0;font-size: 22px;}
+					.username {text-align: center;margin-top: 0;}
+				</style>
+				<h2 class="mt0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,3H3C2,3 1,4 1,5V19A2,2 0 0,0 3,21H21C22,21 23,20 23,19V5C23,4 22,3 21,3M5,17L8.5,12.5L11,15.5L14.5,11L19,17H5Z" /></svg> {{LANG Avatar}} & {{LANG Cover}}</h2>
+				<?php if (!empty($music->user_info['setting']->cover)) { ?>
+					<div class="cover"><img src="<?php echo($music->user_info['setting']->cover) ?>"></div>
+				<?php } ?>
+				<?php if (!empty($music->user_info['setting']->avatar)) { ?>
+					<div class="main_avatar"><img src="<?php echo($music->user_info['setting']->avatar) ?>"></div>
+				<?php } ?>
+				<h3 class="name">
+					<?php if (!empty($music->user_info['setting']->name)) { ?>
+						<?php echo $music->user_info['setting']->name; ?>
+					<?php } ?>
+				</h3>
+				<?php if (!empty($music->user_info['setting']->username)) { ?>
+					<p class="username">@<?php echo($music->user_info['setting']->username) ?></p>
+				<?php } ?>
+				<?php if (!empty($music->user_info['setting']->about)) { ?>
+					<p class="about"><?php echo br2nl($music->user_info['setting']->about); ?></p>
+				<?php } ?>
+				
+				<table>
+					<?php if (!empty($music->user_info['setting']->email)) { ?>
+						<tr>
+							<td>{{LANG Email}}</td>
+							<td><?php echo($music->user_info['setting']->email) ?></td>
+						</tr>
+					<?php } ?>
+					<?php if (!empty($music->user_info['setting']->phone_number)) { ?>
+						<tr>
+							<td>{{LANG Phone Number}}</td>
+							<td><?php echo($music->user_info['setting']->phone_number) ?></td>
+						</tr>
+					<?php } ?>
+					<?php if (!empty($music->user_info['setting']->age)) { ?>
+						<tr>
+							<td>{{LANG Age}}</td>
+							<td><?php echo($music->user_info['setting']->age) ?></td>
+						</tr>
+					<?php } ?>
+					<?php if (!empty($music->user_info['setting']->country_id) && in_array($music->user_info['setting']->country_id, array_keys($countries_name))) { ?>
+						<tr>
+							<td>{{LANG Country}}</td>
+							<td><?php echo($countries_name[$music->user_info['setting']->country_id]) ?></td>
+						</tr>
+					<?php } ?>
+					<?php if (!empty($music->user_info['setting']->gender)) { ?>
+						<tr>
+							<td>{{LANG Gender}}</td>
+							<td><?php if ($music->user_info['setting']->gender == 'male') { ?>
+								{{LANG Male}}
+							<?php }elseif ($music->user_info['setting']->gender == 'female') { ?>
+								{{LANG Female}}
+							<?php } ?>
+							</td>
+						</tr>
+					<?php } ?>
+					<?php if (!empty($music->user_info['setting']->is_pro)) { ?>
+						<tr>
+							<td>{{LANG Pro user}}</td>
+							<td>{{LANG Pro}}</td>
+						</tr>
+					<?php } ?>       
+					<?php if (!empty($music->user_info['setting']->facebook)) { ?>
+						<tr>
+							<td>{{LANG Facebook Username}}</td>
+							<td><?php echo $music->user_info['setting']->facebook; ?></td>
+						</tr>
+					<?php } ?>                  
+					<?php if (!empty($music->user_info['setting']->website)) { ?>
+						<tr>
+							<td>{{LANG Website}}</td>
+							<td><?php echo $music->user_info['setting']->website; ?></td>
+						</tr>
+					<?php } ?>             
+				</table>
+				<?php if (!empty($music->user_info['setting']->session)) { ?>
+				<style>
+					.active_sessions {padding: 0 15px;margin-bottom: 10px;}
+					.active_sessions .as_list {padding: 13px 10px;position: relative;border-bottom: 1px solid rgba(0, 0, 0, 0.07);}
+					.active_sessions .as_list:last-child {border: 0;}
+					.active_sessions .as_list .platform_icon {margin-right: 15px;float: left;width: 36px;height: 36px;display: flex;align-items: center;justify-content: center;}
+					.active_sessions .as_list .platform_icon svg {width: 28px;height: 28px;}
+					.active_sessions .as_list .log_out_session {float: right;width: 35px;height: 35px;display: flex;align-items: center;justify-content: center;padding: 0;border-radius: 50%;margin: 1px 0;}
+					.active_sessions .as_list .session_info {display: block;margin-left: 51px;}
+					.active_sessions .as_list .session_info h4 {margin-top: 0;margin-bottom: 4px;font-weight: 600;}
+					.active_sessions .as_list .session_info p {margin-bottom: 8px;line-height: 1;margin-top: 0;font-size: 13px;color: #717171;}
+				</style>
+				<h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.3V15.8C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z" /></svg> {{LANG Manage Sessions}}</h2>
+				<div class="active_sessions">
+					<?php foreach ($music->user_info['setting']->session as $key => $session) { ?>
+						<div class="as_list" id="session_<?php echo $session->id ?>">
+							<div class="platform_icon">
+								<?php 
+								switch (strtolower($session->platform)) {
+									case 'windows':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#00adef" d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"></path></svg>';
+									break;
+									case 'linux':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z"></path></svg>';
+									break;
+									case 'mac':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z"></path></svg>';
+									break;
+									case 'iphone web':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"></path></svg>';
+									break;
+									case 'android web':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#A4C439" d="M15,5H14V4H15M10,5H9V4H10M15.53,2.16L16.84,0.85C17.03,0.66 17.03,0.34 16.84,0.14C16.64,-0.05 16.32,-0.05 16.13,0.14L14.65,1.62C13.85,1.23 12.95,1 12,1C11.04,1 10.14,1.23 9.34,1.63L7.85,0.14C7.66,-0.05 7.34,-0.05 7.15,0.14C6.95,0.34 6.95,0.66 7.15,0.85L8.46,2.16C6.97,3.26 6,5 6,7H18C18,5 17,3.25 15.53,2.16M20.5,8A1.5,1.5 0 0,0 19,9.5V16.5A1.5,1.5 0 0,0 20.5,18A1.5,1.5 0 0,0 22,16.5V9.5A1.5,1.5 0 0,0 20.5,8M3.5,8A1.5,1.5 0 0,0 2,9.5V16.5A1.5,1.5 0 0,0 3.5,18A1.5,1.5 0 0,0 5,16.5V9.5A1.5,1.5 0 0,0 3.5,8M6,18A1,1 0 0,0 7,19H8V22.5A1.5,1.5 0 0,0 9.5,24A1.5,1.5 0 0,0 11,22.5V19H13V22.5A1.5,1.5 0 0,0 14.5,24A1.5,1.5 0 0,0 16,22.5V19H17A1,1 0 0,0 18,18V8H6V18Z"></path></svg>';
+									break;
+									case 'mobile':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z"></path></svg>';
+									break;
+									case 'phone':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z"></path></svg>';
+									break;
+									case 'unknown':
+									$icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#666" d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"></path></svg>';
+									break;
+								}
+								echo $icon;
+								?>
+							</div>
+							<div class="session_info">
+								<h4><?php echo $session->platform ?></h4>
+								<p><?php echo $session->browser; ?> - <?php echo $session->time; ?></p>
+								<?php if ($session->ip_address) { ?>
+									<p>{{LANG Ip Address}}: <?php echo $session->ip_address; ?></p>
+								<?php } ?>
+							</div>
+						</div>
+					<?php } ?>
+				</div>
+			<?php } ?> 
+			<?php if (!empty($music->user_info['setting']->block)) { ?>
+				<h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15,14C17.67,14 23,15.33 23,18V20H7V18C7,15.33 12.33,14 15,14M15,12A4,4 0 0,1 11,8A4,4 0 0,1 15,4A4,4 0 0,1 19,8A4,4 0 0,1 15,12M5,9.59L7.12,7.46L8.54,8.88L6.41,11L8.54,13.12L7.12,14.54L5,12.41L2.88,14.54L1.46,13.12L3.59,11L1.46,8.88L2.88,7.46L5,9.59Z" /></svg> {{LANG Blocked Users}}</h2>
+				<div class="users_list">
+					<?php foreach ($music->user_info['setting']->block as $member) { ?>
+						<div class="profile-style" id="member-<?php echo $member->user_id ?>">
+							<a href="<?php echo $member->user->url;?>" data-ajax="?link1=timeline&u=<?php echo $member->user->username ?>">
+								<div class="avatar">
+									<img src="<?php echo $member->user->avatar;?>" alt="<?php echo $member->user->name; ?> Profile Picture" />
+								</div>
+							</a>
+							<span><a href="<?php echo $member->user->url;?>" data-ajax="?link1=timeline&u=<?php echo $member->user->username ?>"><?php echo $member->user->name; ?></a></span>
+						</div>
+					<?php }  ?>
+				</div>
+			<?php } ?>
+			<?php if (!empty($music->user_info['setting']->followers)) { ?>
+				<h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> {{LANG Followers}}</h2>
+				<div class="users_list">
+					<?php foreach ($music->user_info['setting']->followers as $key => $UsersList) { ?>
+						<div class="profile-style" data-user-id="<?php echo $UsersList->id;?>">
+							<a href="<?php echo $UsersList->url;?>" >
+								<div class="avatar">
+									<img src="<?php echo $UsersList->avatar;?>" alt="<?php echo $UsersList->name; ?> Profile Picture" />
+								</div>
+							</a>
+							<span><a href="<?php echo $UsersList->url;?>"><?php echo $UsersList->name; ?></a></span>
+						</div>
+					<?php }  ?>
+				</div>
+			<?php } ?>
+			<?php if (!empty($music->user_info['setting']->following)) { ?>
+				<h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z"></path></svg> {{LANG Following}}</h2>
+				<div class="users_list">
+					<?php foreach ($music->user_info['setting']->following as $key => $UsersList) { ?>
+						<div class="profile-style" data-user-id="<?php echo $UsersList->id;?>">
+							<a href="<?php echo $UsersList->url;?>" >
+								<div class="avatar">
+									<img src="<?php echo $UsersList->avatar;?>" alt="<?php echo $UsersList->name; ?> Profile Picture" />
+								</div>
+							</a>
+							<span><a href="<?php echo $UsersList->url;?>"><?php echo $UsersList->name; ?></a></span>
+						</div>
+					<?php }  ?>
+				</div>
+			<?php } ?>
+
+
+
+
+			<?php if (!empty($music->user_info['setting']->songs)) { ?>
+				<style type="text/css">
+					.feed_song {
+    display: flex;
+    align-items: center;
+    transition: all .5s;
+    padding: 10px 15px;
+}
+.feed_song .first {
+    position: relative;
+    min-width: 68px;
+    margin: 0;
+}
+.feed_song .first .cover {
+    margin-right: 15px;
+    position: relative;
+    cursor: pointer;
+    width: 68px;
+    height: 68px;
+    display: block;
+}
+.feed_song .first .cover img {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.sq_music_tracks .track .cover_art .play_btn, .feed_song .first .cover .play_btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(53, 67, 74, 0.8);
+    color: #d2d2d2;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.sq_music_tracks .track .cover_art .play_btn svg, .feed_song .first .cover .play_btn svg {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(.7);
+    width: 45px;
+    height: 45px;
+    transition: transform .2s ease,-webkit-transform .2s ease;
+}
+.feed_song .second {
+    max-width: calc(100% - 170px);
+}
+.feed_song .second .art_details h4 {
+    color: #dfdfdf;
+    margin-bottom: 5px;
+    font-size: 21px;
+    font-weight: 400;
+}
+.feed_song .second .art_details h4, .feed_song .second .art_details span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.feed_song .third {
+    margin-left: auto;
+}
+.feed_song .third .duration {
+    color: #999999;
+    font-size: 13px;
+}
+.feed_song .third .duration svg {
+    width: 16px;
+    height: 16px;
+    margin-top: -2px;
+}
+				</style>
+				<h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z"></path></svg> {{LANG Songs}}</h2>
+				<div class="users_list">
+					<?php foreach ($music->user_info['setting']->songs as $song) { ?>
+						<ul class="feed_song list-unstyled mb-0">
+							<li class="first">
+								<span class="cover">
+									<img src="<?php echo($song->thumbnail) ?>">
+									<div class="play_btn">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="currentColor" d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>
+									</div>
+								</span>
+							</li>
+							<li class="second">
+								<div class="art_details">
+									<a href="<?php echo $song->url; ?>"><h4><?php echo $song->title; ?> </h4></a><!--
+									<span class="a_name"><a href="artist.php">Jason Derulo</a></span> -->
+								</div>
+							</li>
+									<li class="third">
+								<span class="duration"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"></path></svg> <?php echo $song->duration; ?></span>
+							</li>
+						</ul>
+					<?php }  ?>
+				</div>
+			<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<?php } ?>
+		<footer>
+			<p><?php
+						$lang_copy = lang("© |DATE| |NAME|");
+						$lang_copy = str_replace('|NAME|', $music->config->name, $lang_copy);
+						echo $lang_copy = str_replace('|DATE|', date('Y'), $lang_copy);
+					?></p>
+		</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<div class="track_list ds_radio_stat_list" data-id="{{STATION id}}">
+    <div class="track">
+        <div class="cover_art">
+            <a href="{{LINK track}}/{{STATION audio_id}}" data-load="track/{{STATION audio_id}}">
+                <img src="{{STATION thumbnail}}" />
+                <div class="play_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="currentColor" d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>
+                </div>
+            </a>
+			<?php if ($data['STATION_DATA']->IsOwner|| isAdmin()) {?>
+				<button class="btn btn-primary" onclick="deleteStation('{{STATION id}}');" title="{{LANG Delete Station}}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"></path></svg></button>
+			<?php } ?>
+        </div>
+        <div class="track_info">
+            <a href="{{LINK track}}/{{STATION audio_id}}" data-load="track/{{STATION audio_id}}"><span class="title">{{STATION title}}</span></a>
+            <a href="{{LINK track}}/{{STATION audio_id}}"><span class="artist">{{STATION description}} . {{STATION tags}}</span></a>
+        </div>
+    </div>
+</div>

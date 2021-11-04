@@ -1,0 +1,13 @@
+<?php if( $data['profile_page'] == "1" ){?>
+<li>
+    <?php
+    echo $data['name'] . ': ';
+    if ($data['select_type'] == 'yes') {
+        $options = @explode(',', $data['type']);
+        echo $options[$music->userData->fields[$data['fid']] - 1];
+    } else {
+        echo $music->userData->fields[$data['fid']];
+    }
+    ?>
+</li>
+<?php } ?>

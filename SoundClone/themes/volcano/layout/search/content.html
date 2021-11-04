@@ -1,0 +1,36 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+            <div class="ma_tabs search_tabs">
+                <ul class="list-unstyled mb-0">
+                    <li class="song <?php echo ($music->search_page == 'songs') ? 'active' : ''?>">
+                        <a href="{{LINK search/songs/}}{{SEARCH_KEYWORD}}" data-load="search/songs/{{SEARCH_KEYWORD}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z" /></svg> {{LANG Songs}}</a>
+                    </li>
+                    <li class="artist <?php echo ($music->search_page == 'artists') ? 'active' : ''?>">
+                        <a href="{{LINK search/artists/}}{{SEARCH_KEYWORD}}" data-load="search/artists/{{SEARCH_KEYWORD}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11,14C12,14 13.05,14.16 14.2,14.44C13.39,15.31 13,16.33 13,17.5C13,18.39 13.25,19.23 13.78,20H3V18C3,16.81 3.91,15.85 5.74,15.12C7.57,14.38 9.33,14 11,14M11,12C9.92,12 9,11.61 8.18,10.83C7.38,10.05 7,9.11 7,8C7,6.92 7.38,6 8.18,5.18C9,4.38 9.92,4 11,4C12.11,4 13.05,4.38 13.83,5.18C14.61,6 15,6.92 15,8C15,9.11 14.61,10.05 13.83,10.83C13.05,11.61 12.11,12 11,12M18.5,10H20L22,10V12H20V17.5A2.5,2.5 0 0,1 17.5,20A2.5,2.5 0 0,1 15,17.5A2.5,2.5 0 0,1 17.5,15C17.86,15 18.19,15.07 18.5,15.21V10Z" /></svg> {{LANG Artists}}</a>
+                    </li>
+                    <li class="album <?php echo ($music->search_page == 'albums') ? 'active' : ''?>">
+                        <a href="{{LINK search/albums/}}{{SEARCH_KEYWORD}}" data-load="search/albums/{{SEARCH_KEYWORD}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4,6H2V20A2,2 0 0,0 4,22H18V20H4M18,7H15V12.5A2.5,2.5 0 0,1 12.5,15A2.5,2.5 0 0,1 10,12.5A2.5,2.5 0 0,1 12.5,10C13.07,10 13.58,10.19 14,10.5V5H18M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2Z" /></svg> {{LANG Albums}}</a>
+                    </li>
+                    <li class="playlist <?php echo ($music->search_page == 'playlist') ? 'active' : ''?>">
+                        <a href="{{LINK search/playlist/}}{{SEARCH_KEYWORD}}" data-load="search/playlist/{{SEARCH_KEYWORD}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,9H2V11H19V9M19,5H2V7H19V5M2,15H15V13H2V15M17,13V19L22,16L17,13Z" /></svg> {{LANG Playlists}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <?php if($music->search_page == 'artists' || $music->search_page == 'playlist'){?>
+                    <div class="col-md-12" id="search_results">
+                        {{RESULT}}
+                    </div>
+                <?php } else { ?>
+                    <div class="col-md-9" id="search_results">
+                        {{RESULT}}
+                    </div>
+					<div class="col-md-3">
+                        {{FILTERS}}
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>

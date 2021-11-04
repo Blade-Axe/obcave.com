@@ -1,0 +1,108 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+            <!-- Settings -->
+            <div class="sett_page">
+                <?php echo loadPage("settings/sidebar"); ?>
+                <div class="st_content">
+                    <div class="st_form">
+                        <h3>{{LANG Two-factor authentication}}</h3>
+                        <form class="form-horizontal setting-change-password-form" method="post">
+                            <div class="setting-password-alert setting-update-alert"></div>
+							<div class="text-center mb-3">
+								<svg height="110" viewBox="0 0 192 192" width="110" xmlns="http://www.w3.org/2000/svg" class="mb-3"><linearGradient id="New_Gradient_Swatch_2" gradientUnits="userSpaceOnUse" x1="32" x2="160" y1="112" y2="-16"><stop offset="0" stop-color="#34cdfa"/><stop offset="1" stop-color="#e8d9f1"/></linearGradient><path d="m8 8h176v80h-176z" fill="url(#New_Gradient_Swatch_2)"/><path d="m184 96h-176a8 8 0 0 1 -8-8v-80a8 8 0 0 1 8-8h176a8 8 0 0 1 8 8v80a8 8 0 0 1 -8 8zm-168-16h160v-64h-160z" fill="#ccf2fe"/><path d="m170.53 47.589-5.06-15.178-13.47 4.49v-12.901h-16v12.901l-13.47-4.49-2.53 7.589-2.53-7.589-13.47 4.49v-12.901h-16v12.901l-13.47-4.49-2.53 7.589-2.53-7.589-13.47 4.49v-12.901h-16v12.901l-13.47-4.49-5.06 15.178 11.72 3.907-6.847 6.847 11.314 11.314 10.343-10.344 10.343 10.344 11.314-11.314-6.847-6.847 9.19-3.063 9.19 3.063-6.847 6.847 11.314 11.314 10.343-10.344 10.343 10.344 11.314-11.314-6.847-6.847 9.19-3.063 9.19 3.063-6.847 6.847 11.314 11.314 10.343-10.344 10.343 10.344 11.314-11.314-6.847-6.847z" fill="#fff"/><path d="m187.882 155.021-42.694-66.411a24 24 0 0 0 -40.376 0l-42.694 66.411a24 24 0 0 0 20.189 36.979h85.386a24 24 0 0 0 20.189-36.979z" fill="#67d9fb"/><path d="m107.307 184a24 24 0 0 1 -20.189-36.979l42.694-66.411a24.037 24.037 0 0 1 1.571-2.157 24 24 0 0 0 -26.571 10.157l-42.694 66.411a24 24 0 0 0 20.189 36.979h85.386a23.63 23.63 0 0 0 17.9-8z" fill="#01c0f9"/><g fill="#e6f9fe"><path d="m117 112h16v32h-16z"/><path d="m117 152h16v16h-16z"/></g></svg>
+							</div>
+							
+                            <!-- Form Name -->
+                            <div class="setting-panel row">
+                                <?php if ($music->config->two_factor_type == 'both' || $music->config->two_factor_type == 'phone') { ?>
+                                <div class="form-group col-lg-12">
+                                    <label class="col-md-12" for="phone_number">{{LANG Phone}}</label>
+                                    <div class="col-md-12">
+                                        <input name="phone_number" id="phone_number" type="text" class="form-control input-md" autocomplete="off" placeholder="+15417543010" value="<?php echo $music->userData->phone_number?>">
+                                    </div>
+                                </div>
+                                <?php } ?>
+                                <div class="form-group col-lg-12">
+                                    <label class="col-md-12" for="two_factor">{{LANG Two-factor authentication}}</label>
+                                    <div class="col-md-12">
+                                        <select id="two_factor_select" name="two_factor" class="form-control">
+                                            <option value="enable" <?php echo ($music->userData->two_factor == '1')   ? 'selected' : '';?> >{{LANG Enable}}</option>
+                                            <option value="disable" <?php echo ($music->userData->two_factor == '0')   ? 'selected' : '';?> >{{LANG Disable}}</option>
+                                        </select>
+                                        <input type="hidden" name="" id="two_factor_value">
+                                        <br>
+                                        <small>{{LANG Turn on 2-step login to level-up your account's security, Once turned on, you'll use both your password and a 6-digit security code sent to your phone or email to log in.}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="last-sett-btn modal-footer">
+                                <input type="hidden" id="user-id" name="user_id" value="{{USER id}}">
+                                <button type="button" class="btn btn-primary btn-mat" id="submit_two_factor_btn">{{LANG Save}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Settings -->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).on('click', '#submit_two_factor_btn', function(event) {
+        $.ajax({
+            url: "{{CONFIG ajax_url}}/user/update_two_factor?hash_id=" + getHashID() + '&s=' + $('#two_factor_select').val(),
+            type: 'POST',
+            data:$('form.setting-change-password-form').serialize(),
+            beforeSend: function() {
+                $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+                $('#setting-password-alert').removeClass("alert-success").addClass('alert-danger');
+                $('#setting-password-alert').empty();
+                $("#submit_two_factor_btn").text("{{LANG Please wait..}}");
+            },
+            success: function(data) {
+                if (data.status == 200) {
+                    $("#submit_two_factor_btn").text("{{LANG Save}}");
+                    $('.setting-password-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+                    $('.alert-success').fadeIn('fast', function() {
+                        $(this).delay(2000).slideUp(500, function() {
+                            $(this).remove();
+                            if ($('#two_factor_select').val() == 'enable') {
+                                $('#confirmation_code_form_user_id').val('{{USER id}}');
+                                $('#verify_code').modal('show');
+                            }
+                        });
+                    });
+                } else if (data.status == 400) {
+                    $('.setting-password-alert').html('<div class="alert alert-danger">' + data.message + '</div>');
+                    $('.alert-danger').fadeIn(300);
+                }
+                $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+            }
+        });
+    });
+    $(function() {
+        $('form.confirmation_code_form').ajaxForm({
+            url: "{{CONFIG ajax_url}}/user/update_two_factor?hash_id=" + getHashID() + '&s=verify',
+            beforeSend: function() {
+                $('#confirmation_code_form_btn').text('{{LANG Please wait..}}');
+            },
+            success: function(data) {
+                if (data.status == 200) {
+                    $('#confirmation_code_form_alert').html('<div class="alert alert-success">' + data.message + '</div>');
+                    $('#confirmation_code_form_alert').fadeIn('fast', function() {
+                        $(this).delay(2500).slideUp(500, function() {
+                            $(this).remove();
+                            $('#verify_code').modal('hide');
+                            location.reload();
+                        });
+                    });
+                } else if (data.status == 400) {
+                    $('#confirmation_code_form_alert').html('<div class="alert alert-danger">' + data.message + '</div>');
+                    $('.alert-danger').fadeIn(300);
+                }
+                $('#confirmation_code_form_btn').text('{{LANG Send}}');
+            }
+        });
+    });
+</script>

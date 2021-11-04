@@ -1,0 +1,98 @@
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<div class="page_padding">
+			<!-- Album Songs -->
+			<div class="row mb-60">
+				<div class="col-md-8">
+					<div class="album_songs">
+						<div class="album_poster_info">
+							<div class="al_art">
+								<div class="al_art_img" style="background-image: url({{thumbnail}});"></div>
+							</div>
+							<div>
+								<h2 class="al_name"><a href="{{url}}" data-load="album/{{album_id}}">{{title}}</a></h2>
+								<span class="al_artist"><a href="{{USER url}}" data-load="{{USER username}}">{{USER name}}</a></span>
+								<p class="text-center al_add_info">{{count}} {{LANG songs}} &nbsp;<?php if( $music->config->artist_sell == 'on' ) { ?> - &nbsp; <span>{{purchases_count}} {{LANG purchases}}</span><?php } ?></p>
+								<div class="play_btn">
+									<button class="btn btn-primary btn-mat" onclick="playPlayListSongs({{id}}, 'album')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg> {{LANG Play}}</button>
+									<?php if (IS_LOGGED) { ?>
+										<?php if ($music->getAlbum->user_id == $music->user->id) { ?>
+											<span class="dropdown">
+												<button class="btn btn-primary-rev btn-mat" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" /></svg></button>
+												<div class="dropdown-menu dropdown-menu-right mat-dropdown">
+													<ul class="list-unstyled mb-0">
+														<li><a href="{{LINK album-statistics/{{album_id}}/today}}" data-load="album-statistics/{{album_id}}/today">{{LANG Statistics}}</a></li>
+														<li><a href="{{LINK edit-album/{{album_id}}}}" data-load="edit-album/{{album_id}}">{{LANG Edit}}</a></li>
+														<li class="divider"></li>
+														<li><a href="javascript:void(0)" onclick="$('#delete-album').attr('data-id', '{{id}}'); $('#delete-album').modal('show')">{{LANG Delete}}</a></li>
+													</ul>
+												</div>
+											</span>
+										<?php }else{ ?>
+											<?php if(isUserBuyAlbum($data['id']) === true){?>
+												<!--<p>{{LANG You have bought this album.}}</p>-->
+											<?php }else if (!empty($music->getAlbum->price)) { ?>
+												<?php if( $music->config->artist_sell == 'on' ){ ?>
+												<button class="btn btn-primary-rev btn-mat" onclick="purchaseAlbum('{{album_id}}', $(this))" data_price="<?php echo($music->getAlbum->price) ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" /></svg> {{LANG Buy}}</button>
+												<?php } ?>
+											<?php } ?>
+										<?php } ?>
+									<?php } ?>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr class="albm_song_hr">
+					<div class="short_list_cont albm_song_listz">
+						<div class="short_list_card wide_page_songs album_play_song_lists">
+							<ul class="s_list_songs">
+								{{SONG_LIST}}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php if( $data['RELATED'] !== '' ){ ?>
+					<!-- Related Albums -->
+						<div class="sq_music_tracks">
+							<h2 class="home_big_title">{{LANG You may also like}}</h2>
+							<div class="sq_track_slider mus_disc_new_trk mus_albm_rltd_trk">
+								{{RELATED}}
+							</div>
+						</div>
+					<!-- End Related Albums -->
+					<?php } ?>
+				</div>
+			</div>
+			<!-- End Album Songs  -->
+		</div>		
+	</div>
+</div>
+<?php echo loadPage('modals/delete-album'); ?>
+<script>
+    $(document).ready(function(){
+    <?php if (IS_LOGGED) { ?>
+        <?php if ($music->getAlbum->user_id == $music->user->id) { ?>
+			$( ".s_list_songs" ).sortable({
+				revert: 100,
+				axis: 'y',
+				update: function( event, ui ) {
+					var data = $( ".s_list_songs" ).sortable('serialize');
+					$.ajax({
+						data: data,
+						type: 'POST',
+						url: "{{CONFIG ajax_url}}/album/update_album_song_sorting?album_id={{id}}&hash_id=" + getHashID(),
+						success:function(result) {
+							setTimeout(function () {
+								goToAjaxLink('album/{{album_id}}');
+								location.reload();
+							}, 500);
+						}
+					});
+				}
+			});
+			$( ".s_list_songs" ).disableSelection();
+		<?php }?>
+	<?php }?>
+    });
+</script>

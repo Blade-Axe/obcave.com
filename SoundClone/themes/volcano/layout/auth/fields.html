@@ -1,0 +1,16 @@
+<div class="form-group mat_input">
+    <?php if ($data['select_type'] == 'yes') { $options = @explode(',', $data['type']); ?>
+        <select name="<?php echo $data['fid'];?>" placeholder="<?php echo $data['name'];?>" class="form-control">
+    <?php foreach ($options as $key => $value) { ?>
+
+            <option value="<?php echo $key + 1;?>"><?php echo $value;?></option>
+    <?php } ?>
+        </select>
+    <?php
+        } else {
+            if ($data['type'] == 'textbox') { ?>
+                <input id="<?php echo $data['fid'];?>" name="<?php echo $data['fid'];?>" type="text" class="form-control" placeholder="<?php echo $data['name'];?>">
+        <?php } else if ($data['type'] == 'textarea') {?>
+                <textarea id="<?php echo $data['fid'];?>" name="<?php echo $data['fid'];?>" cols="20" rows="3" class="form-control" placeholder="<?php echo $data['name'];?>"></textarea>
+    <?php } } ?>
+</div>

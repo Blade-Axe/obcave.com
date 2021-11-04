@@ -1,0 +1,19 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+			<h2 class="home_big_title">{{LANG Hall of fame}}</h2>
+            <div class="row">
+                <div class="col-md-12" id="fame_page">
+                    <div class="row ds_hall_art_prnt" id="fame_page_result">
+					    {{DATA}}
+					</div>
+                    <?php if ($music->fame) { ?>
+					<div class="text-center see_all">
+					    <a href="javascript:void(0); loadMore('fame_page', '');" id="load-more-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg> {{LANG Load More}}</a>
+					</div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

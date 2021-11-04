@@ -1,0 +1,86 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+            <!-- Settings -->
+            <div class="sett_page">
+                <h3>{{LANG Notification Settings}}</h3>
+                <?php echo loadPage("settings/sidebar"); ?>
+                <div class="st_content">
+                    <div class="st_form ds_not_sett_togs">
+                        <p>{{LANG Notify me when}}</p>
+                        <div onclick="ToggleNotificationStatus('email_on_follow_user');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_follow_user == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Someone followed me}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_liked_track');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>'  <?php if($music->user->email_on_liked_track == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Someone liked/disliked one of my tracks}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_reviewed_track');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>'  <?php if($music->user->email_on_reviewed_track == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Someone reviewed one of my tracks}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_liked_comment');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_liked_comment == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Someone liked one of my comments}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_artist_status_changed');" style="display: none;" >
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_artist_status_changed == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Approve/Disapprove artist request}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_receipt_status_changed');" style="display: none;" >
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_receipt_status_changed == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG Approve/Disapprove bank payment request}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_new_track');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_new_track == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG One of my following users upload new track}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_comment_mention');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_comment_mention == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG One of my follower mention me in comment}}</label>
+                        </div>
+                        <div onclick="ToggleNotificationStatus('email_on_comment_replay_mention');">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" data-onstyle="main" data-offstyle="warning" data-on='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>' data-off='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>' <?php if($music->user->email_on_comment_replay_mention == 1) { echo 'checked=checked';}?> >
+                            </label>
+                            <label>{{LANG One of my follower mention me in comment replay}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Settings -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready( function () {
+        $('.st_form').find('[type="checkbox"]').each(function(index, el) {
+            $(el).bootstrapToggle();
+        });
+    });
+
+    function ToggleNotificationStatus(id){
+        if (!id) {
+            return false;
+        }
+        $.post('{{CONFIG ajax_url}}/user/update_notification_setting', {id:id}, function(data, textStatus, xhr) {/* pass */});
+    }
+</script>

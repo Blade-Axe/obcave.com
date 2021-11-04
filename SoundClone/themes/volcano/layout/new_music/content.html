@@ -1,0 +1,64 @@
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<center><?php echo GetAd('header');?></center>
+		<div class="page_padding">
+			<!-- Best Releases -->
+			<div class="sq_music_tracks mb-60">
+				<h2 class="home_widget_title home_big_title">
+					{{LANG Best New Releases}}
+					<div class="slide_btns">
+						<div class="best_music_btn"></div>
+					</div>
+				</h2>
+				<div class="owl-carousel sq_track_slider owl-theme bm_slider">{{BEST_NEW_RELEASES}}</div>
+			</div>
+			<!-- End Best Releases -->
+
+			<!-- New Releases -->
+			<div class="sq_music_tracks">
+				<h2 class="home_big_title">{{LANG Latest Music}}</h2>
+				<div class="sq_track_slider no-slider" id="new-music">{{NEW_RELEASES}}</div>
+				<?php if ($music->latestReleases > 19) { ?>
+				<div class="text-center see_all">
+					<a href="javascript:void(0); loadMore('latest_music');" id="load-more-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg> {{LANG Load More}}</a>
+				</div>
+				<?php } ?>
+			</div>
+			<!-- End New Releases -->
+		</div>
+		
+	</div>
+</div>
+
+<script>
+$(function () {
+	$(".bm_slider").owlCarousel({
+		margin:20,
+		nav: true,
+		dots: false,
+		navContainer: '.best_music_btn',
+		slideBy: 2,
+		items:7,
+		responsive:{
+			0:{
+				items:1
+			},
+			260:{
+				items:2
+			},
+			380:{
+				items:3
+			},
+			768:{
+				items:5
+			},
+			992:{
+				items:6
+			},
+			1300:{
+				items:7
+			}
+		}
+	});
+})
+</script>
