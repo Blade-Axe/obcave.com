@@ -1,0 +1,17 @@
+<div class="store_filters">
+	<div class="store_widget">
+		<div class="s_widget_head">
+			<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17.63,5.84C17.27,5.33 16.67,5 16,5H5A2,2 0 0,0 3,7V17A2,2 0 0,0 5,19H16C16.67,19 17.27,18.66 17.63,18.15L22,12L17.63,5.84Z"></path></svg></span> {{LANG Categories}}
+		</div>
+		<div class="store_categories blog_cats_box">
+            <span class="check_box">
+                <a href="{{LINK }}blogs" data-load="/blogs" <?php if( $data['active_category'] == null ) { echo ' class="active" '; } ?>>{{LANG All}}</a>
+            </span>
+			<?php foreach($music->blog_categories as $key => $category){?>
+			    <span class="check_box">
+			        <a <?php if( $data['active_category'] == $key ) { echo ' class="active" '; } ?> href="{{LINK }}blogs/<?php echo $key . '_' . url_slug(html_entity_decode($category));?>" data-load="/blogs/<?php echo $key . '_' . url_slug(html_entity_decode($category));?>"><?php echo $category;?></a>
+				</span>
+			<?php } ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<tr id="<?php echo $data['category_key'];?>" data_selected="<?php echo $data['category_key'];?>">
+	<td><input type="checkbox" id="check-data-<?php echo $data['category_key'];?>" class="delete-checkbox filled-in"><label for="check-data-<?php echo $data['category_key'];?>"></label></td>
+    <td><?php echo $data['category_id'];?></td>
+    <td id="edit_<?php echo $data['category_key'];?>"><?php echo $data['category'];?></td>
+    <td>
+        <button type="button" class="btn bg-success admn_table_btn" data-id="<?php echo $data['category_key'];?>" data-toggle="modal" data-target="#defaultModal">Edit</button>
+        <button onclick="Wo_DeleteCategory('<?php echo $data['category_key'];?>','hide');" type="button" class="btn bg-danger admn_table_btn">Delete</button>
+    </td>
+</tr>

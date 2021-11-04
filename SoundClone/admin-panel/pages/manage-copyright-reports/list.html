@@ -1,0 +1,11 @@
+<tr id="list-{{REPORT id}}" data_selected="{{REPORT id}}">
+	<td><input type="checkbox" id="check-data-{{REPORT id}}" class="delete-checkbox filled-in"><label for="check-data-{{REPORT id}}"></label></td>
+    <td>{{REPORT id}}</td>
+    <td><a href="{{USER url}}"><img src="{{USER avatar}}" class="td-avatar" alt="user avatar"> {{USER username}}</a></td>
+    <td>{{REPORT description}}</td>
+    <td><?php echo Time_Elapsed_String($data['REPORT_DATA']->time);?></td>
+    <td>
+        <a class="btn bg-success admn_table_btn" href="{{REPORT link}}" target="_blank">View</a>
+        <button class="btn bg-danger admn_table_btn" data-id="{{REPORT id}}" onclick="DeleteReport('{{REPORT id}}','hide')">Delete</button>
+    </td>
+</tr>

@@ -1,0 +1,90 @@
+<div class="modal fade mat_box" id="verify_code" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="two_factor_title">
+                    <?php
+						if ($music->config->two_factor_type == 'both') {
+                    echo lang('A confirmation message and email were sent.');
+                    }
+                    elseif ($music->config->two_factor_type == 'email') {
+                    echo lang('A confirmation email has been sent.');
+                    }
+                    elseif ($music->config->two_factor_type == 'phone') {
+                    echo lang('A confirmation message was sent.');
+                    }
+                    ?>
+                </h5>
+            </div>
+            <form id="confirmation_code_form" class="confirmation_code_form" method="POST">
+                <div class="modal-body">
+                    <div id="confirmation_code_form_alert"></div>
+                    <span class="verfy_sett_email_phone_ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,13.34C20.37,13.12 19.7,13 19,13A6,6 0 0,0 13,19C13,19.34 13.03,19.67 13.08,20H3A2,2 0 0,1 1,18V6C1,4.89 1.89,4 3,4H19A2,2 0 0,1 21,6V13.34M23.5,17L18.5,22L15,18.5L16.5,17L18.5,19L22,15.5L23.5,17M3,6V8L11,13L19,8V6L11,11L3,6Z" /></svg></span>
+                    <p id="two_factor_desc">
+                        <?php
+							if ($music->config->two_factor_type == 'both') {
+                        echo lang('We have sent a message and an email that contain the confirmation code to enable two-factor authentication');
+                        }
+                        elseif ($music->config->two_factor_type == 'email') {
+                        echo lang('We have sent an email that contains the confirmation code to enable Two-factor authentication.');
+                        }
+                        elseif ($music->config->two_factor_type == 'phone') {
+                        echo lang('We have sent a message that contains the confirmation code to enable Two-factor authentication.');
+                        }
+                        ?>
+                    </p>
+                    <div class="form-group verfy_sett_email_phone">
+                        <input type="text" class="form-control" name="code" placeholder="{{LANG Confirmation code}}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default">{{LANG Cancel}}</button>
+                    <button id="confirmation_code_form_btn" type="submit" class="btn btn-primary">{{LANG Save}}</button>
+                </div>
+                <input type="hidden" id="confirmation_code_form_user_id" name="user_id" value="">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade mat_box" id="verify_email_phone" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="verify_email_phone_title">
+                    <?php
+						if ($music->config->sms_or_email == 'mail') {
+                    echo lang('A confirmation message and email were sent.');
+                    }
+                    elseif ($music->config->sms_or_email == 'sms') {
+                    echo lang('A confirmation message was sent.');
+                    }
+                    ?>
+                </h5>
+            </div>
+            <form id="verify_email_phone_form" class="verify_email_phone_form" method="POST">
+                <div class="modal-body">
+                    <div id="verify_email_phone_form_alert"></div>
+                    <span class="verfy_sett_email_phone_ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,19V5H7V19H17M17,1A2,2 0 0,1 19,3V21A2,2 0 0,1 17,23H7C5.89,23 5,22.1 5,21V3C5,1.89 5.89,1 7,1H17M9,7H15V9H9V7M9,11H13V13H9V11Z" /></svg></span>
+                    <p id="verify_email_phone_desc">
+                        <?php
+							if ($music->config->sms_or_email == 'mail') {
+                        echo lang('We have sent an email that contains the confirmation code to enable Two-factor authentication.');
+                        }
+                        elseif ($music->config->sms_or_email == 'sms') {
+                        echo lang('We have sent a message that contains the confirmation code to enable Two-factor authentication.');
+                        }
+                        ?>
+                    </p>
+                    <div class="form-group verfy_sett_email_phone">
+                        <input type="text" class="form-control" name="code" placeholder="{{LANG Confirmation code}}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default">{{LANG Cancel}}</button>
+                    <button id="verify_email_phone_form_btn" type="submit" class="btn btn-primary">{{LANG Save}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<tr id="{{ALBUM id}}" data_selected="{{ALBUM id}}">
+    <td><input type="checkbox" id="check-data-{{ALBUM id}}" class="delete-checkbox filled-in"><label for="check-data-{{ALBUM id}}"></label></td>
+    <td>{{ALBUM id}}</td>
+    <td>
+        <img src="{{ALBUM thumbnail_ready}}" style="display: block;margin: 0 auto;width: 90px;border-radius: 5px;">
+    </td>
+    <td>
+        <a href="{{LINK user}}/<?php echo $data['ALBUM_DATA']->publisher->username;?>" target="_blank">
+            <img src="<?php echo $data['ALBUM_DATA']->publisher->avatar;?>" class="td-avatar rounded-circle" alt="user avatar"> <?php echo $data['ALBUM_DATA']->publisher->name;?>
+        </a>
+    </td>
+    <td>
+        <p>{{ALBUM name}}</p>
+    </td>
+    <td><b>{{ALBUM privacy_text}}</b></td>
+    <td><a href="{{LINK playlist}}/{{ALBUM uid}}" target="_blank"><?php echo $data['ALBUM_DATA']->songs;?></a></td>
+    <td><?php echo time_Elapsed_String($data['ALBUM_DATA']->time);?></td>
+    <td>
+        <!--<a href="{{LINK edit-playlist}}/{{ALBUM album_id}}" target="_blank" class="btn btn-default waves-effect btn-lang m-r-20">EDIT</a>-->
+        <button type="button" class="btn bg-danger admn_table_btn btn-delete-playlist" data-id="{{ALBUM id}}" onclick="Wo_DeleteAlbum('{{ALBUM id}}','hide');">Delete</button>
+    </td>
+</tr>

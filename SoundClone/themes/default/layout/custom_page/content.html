@@ -1,0 +1,32 @@
+<?php
+if ($music->page_data['page_type'] == 0) {
+?>
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<div class="container">
+			<div class="content">
+				<?php echo htmlspecialchars_decode($music->page_data['page_content']);?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+} else {
+?>
+<div class="ma_page_content">
+	<div class="ma_pc_inner">
+		<div class="container">
+			<div class="ma_tabs">
+				<ul class="list-unstyled mb-0">
+					<li class="active">
+						<a href="javascript:void(0)"><?php echo $music->page_data['page_title']?></a>
+					</li>
+				</ul>
+			</div>
+			<div class="content">
+				<?php echo htmlspecialchars_decode($music->page_data['page_content']);?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php } ?>

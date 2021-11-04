@@ -1,0 +1,10 @@
+<tr class="setting-postlist" id="{{ID}}" data_selected="{{ID}}">
+	<td><input type="checkbox" id="check-data-{{ID}}" class="delete-checkbox filled-in"><label for="check-data-{{ID}}"></label></td>
+   <td>{{ID}}</td>
+   <td><a href="<?php echo getLink('site_pages/{{NAME}}'); ?>">{{NAME}}</a></td>
+   <td>{{TITLE}}</td>
+   <td>
+      <a class="btn bg-success admn_table_btn" href="<?php echo LoadAdminLinkSettings('edit-custom-page?id='); ?>{{NAME}}">Edit</a>
+      <button class="btn bg-danger admn_table_btn" onclick="Wo_DeleteCustomPage({{ID}},'hide');">Delete</button>
+   </td>
+</tr>

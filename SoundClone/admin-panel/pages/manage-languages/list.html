@@ -1,0 +1,9 @@
+<tr class="setting-postlist" id="{{LANG}}" data_selected="{{LANG}}">
+  <td><input type="checkbox" id="check-data-{{LANG}}" class="delete-checkbox filled-in"><label for="check-data-{{LANG}}"></label></td>
+   <td style="text-align: center;">{{LANG_NAME}}</td>
+   <td style="text-align: center;">
+      <a class="btn bg-success admn_table_btn" href="<?php echo LoadAdminLinkSettings('edit-lang?id=');?>{{LANG}}">Edit</a>
+      <a href="javscript:void(0)" class="delete-field btn bg-danger admn_table_btn" onclick="Wo_DeleteLang('{{LANG}}','hide');">Delete</a>
+      
+   </td>
+</tr>

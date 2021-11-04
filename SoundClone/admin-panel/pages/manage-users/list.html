@@ -1,0 +1,33 @@
+<tr id="list-{{USER id}}" data_selected="{{USER id}}">
+  <td class="check"><input type="checkbox" id="check-data-{{USER id}}" class="delete-checkbox filled-in"><label for="check-data-{{USER id}}"></label></td>
+  <td>{{USER id}}</td>
+  <td><a href="{{USER url}}"><img src="{{USER avatar}}" class="td-avatar" alt="user avatar"> {{USER username}}</a></td>
+  <td>{{USER email}}</td>
+    <td><?php echo ($data['USER_DATA']->artist == 1) ? 'Artist' : 'Normal user';?></td>
+  <!--<td>{{USER ip_address}}</td>-->
+  <td>{{STATUS}}</td>
+  <td>
+	<form>
+		<div class="form-group">
+			<div class="form-check form-check-inline">
+                <input class="form-check-input" onclick="Import_Upload_Enable({{USER id}});" type="radio" id="upload_import_{{USER id}}_enabled" name="upload_import_{{USER id}}" value="1" <?php echo ( (int)$data["USER_DATA"]->upload_import === 1 ) ? 'checked=""' : '';?>>
+                <label class="form-check-label" for="upload_import_{{USER id}}_enabled">Enabled</label>
+            </div>
+			<div class="form-check form-check-inline">
+                <input class="form-check-input" onclick="Import_Upload_Disable({{USER id}});" type="radio" id="upload_import_{{USER id}}_disabled" name="upload_import_{{USER id}}" value="0" <?php echo ( (int)$data["USER_DATA"]->upload_import === 0 ) ? 'checked=""' : '';?>>
+                <label class="form-check-label" for="upload_import_{{USER id}}_disabled">Disabled</label>
+            </div>
+      </div>
+	  </form>
+  </td>
+  <td>
+	  <div class="dropdown" style="display: inline;">
+         <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+         <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-end">
+            <a class="dropdown-item" href="javascript:void(0)" onclick="getUserId({{USER id}});" data-toggle="modal" data-target="#FollowersForm">Add Followers</a>
+            <a class="dropdown-item" target="_blank" href="{{SETTINGS_LINK}}">Edit</a>
+            <a class="dropdown-item" href="javascript:void(0)" data-id="{{USER id}}" onclick="Wo_DeleteUser('{{USER id}}','hide');">Delete</a>
+         </div>
+      </div>
+  </td>
+</tr>

@@ -1,0 +1,422 @@
+<?php
+$music->config->ffmpeg  = is_executable($music->config->ffmpeg_binary_file);
+function isEnabled($func) {
+return is_callable($func) && false === stripos(ini_get('disable_functions'), $func);
+}
+$enabled = true;
+if (!isEnabled('shell_exec')) {
+$enabled = false;
+}
+?>
+<div class="container-fluid">
+    <div>
+        <h3>General Settings</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Settings</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">General Settings</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+        <div class="col-lg-6 col-md-6 pull-left">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">User Settings</h6>
+                    <div class="user-settings-alert"></div>
+                    <form class="user-settings" method="POST">
+                        <label for="maintenance_mode">Maintenance Mode <span class="black" data-toggle="popover" data-trigger="hover" data-content="Turn the whole site under Maintenance. You can get the site back by visiting <?php echo $music->config->site_url.'/?access=admin'; ?>"><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="maintenance_mode" id="maintenance_mode-enabled" value="on" <?php echo ($music->config->maintenance_mode == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="maintenance_mode-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="maintenance_mode" id="maintenance_mode-disabled" value="off" <?php echo ($music->config->maintenance_mode == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="maintenance_mode-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="user_registration">User Registration</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="user_registration" id="user_registration-enabled" value="on" <?php echo ($music->config->user_registration == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="user_registration-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="user_registration" id="user_registration-disabled" value="off" <?php echo ($music->config->user_registration == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="user_registration-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="artist_sell">Can artist sell songs?</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="artist_sell" id="artist_sell-enabled" value="on" <?php echo ($music->config->artist_sell == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="artist_sell-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="artist_sell" id="artist_sell-disabled" value="off" <?php echo ($music->config->artist_sell == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="artist_sell-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="who_can_download">Who can download songs?</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="who_can_download" id="who_can_download-enabled" value="pro" <?php echo ($music->config->who_can_download == 'pro') ? 'checked': '';?>>
+                                <label class="form-check-label" for="who_can_download-enabled">Pro users</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="who_can_download" id="who_can_download-disabled" value="free" <?php echo ($music->config->who_can_download == 'free') ? 'checked': '';?>>
+                                <label class="form-check-label" for="who_can_download-disabled" class="m-l-20">Free users</label>
+                            </div>
+                        </div>
+                        <label for="validation">User E-mail Verification</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="validation" id="validation-enabled" value="on" <?php echo ($music->config->validation == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="validation-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="validation" id="validation-disabled" value="off" <?php echo ($music->config->validation == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="validation-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="delete_account">Delete User Account</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="delete_account" id="delete_account-enabled" value="on" <?php echo ($music->config->delete_account == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="delete_account-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="delete_account" id="delete_account-disabled" value="off" <?php echo ($music->config->delete_account == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="delete_account-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="emailNotification">Email Notification</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="emailNotification" id="emailNotification-enabled" value="on" <?php echo ($music->config->emailNotification == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="emailNotification-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="emailNotification" id="emailNotification-disabled" value="off" <?php echo ($music->config->emailNotification == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="emailNotification-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+
+
+
+                        <label for="login_auth">Unusual Login <span class="black" data-toggle="popover" data-trigger="hover" data-content="Send confirmation link when user logins from new location"><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="login_auth" id="login_auth-enabled" value="1" <?php echo ($music->config->login_auth == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="login_auth-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="login_auth" id="login_auth-disabled" value="0" <?php echo ($music->config->login_auth == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="login_auth-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+
+                        <label for="login_auth">Two-factor authentication<span class="black" data-toggle="popover" data-trigger="hover" data-content="Send confirmation code to email or to SMS when user logins"><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="two_factor" id="two_factor-enabled" value="1" <?php echo ($music->config->two_factor == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="two_factor-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="two_factor" id="two_factor-disabled" value="0" <?php echo ($music->config->two_factor == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="two_factor-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+
+                        <label for="login_auth">Send Two-factor authentication code to</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="two_factor_type" id="two_factor_type-email" value="email" <?php echo ($music->config->two_factor_type == 'email') ? 'checked': '';?>>
+                                <label class="form-check-label" for="two_factor_type-email">Email</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="two_factor_type" id="two_factor_type-phone" value="phone" <?php echo ($music->config->two_factor_type == 'phone') ? 'checked': '';?>>
+                                <label class="form-check-label" for="two_factor_type-phone" class="m-l-20">Phone</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="two_factor_type" id="two_factor_type-both" value="both" <?php echo ($music->config->two_factor_type == 'both') ? 'checked': '';?>>
+                                <label class="form-check-label" for="two_factor_type-both" class="m-l-20">Both</label>
+                            </div>
+                        </div>
+                        <label for="discover_land">Discover Page As Landing Page<span class="black" data-toggle="popover" data-trigger="hover" data-content="Send confirmation code to email or to SMS when user logins"><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="discover_land" id="discover_land-enabled" value="1" <?php echo ($music->config->discover_land == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="discover_land-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="discover_land" id="discover_land-disabled" value="0" <?php echo ($music->config->discover_land == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="discover_land-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="who_can_upload">Who Can Upload</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="who_can_upload" id="who_can_upload-enabled" value="admin" <?php echo ($music->config->who_can_upload == 'admin') ? 'checked': '';?>>
+                                <label class="form-check-label" for="who_can_upload-enabled">Admin</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="who_can_upload" id="who_can_upload-disabled" value="artist" <?php echo ($music->config->who_can_upload == 'artist') ? 'checked': '';?>>
+                                <label class="form-check-label" for="who_can_upload-disabled" class="m-l-20">Artist</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="who_can_upload" id="who_can_upload-ss" value="all" <?php echo ($music->config->who_can_upload == 'all') ? 'checked': '';?>>
+                                <label class="form-check-label" for="who_can_upload-ss" class="m-l-20">All Users</label>
+                            </div>
+                        </div>
+                        <label for="donate_system">Donate System</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="donate_system" id="donate_system-enabled" value="1" <?php echo ($music->config->donate_system == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="donate_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="donate_system" id="donate_system-disabled" value="0" <?php echo ($music->config->donate_system == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="donate_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="tag_artist_system">Tag Other Artists</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tag_artist_system" id="tag_artist_system-enabled" value="1" <?php echo ($music->config->tag_artist_system == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="tag_artist_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tag_artist_system" id="tag_artist_system-disabled" value="0" <?php echo ($music->config->tag_artist_system == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="tag_artist_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Hall of fame</h6>
+
+                    <div class="fame-settings-alert"></div>
+                    <div class="fame-settings-test-alert"></div>
+                    <form class="fame-settings" method="POST">
+                        <label for="fame_system">Hall Of Fame Of Artists <span class="black" data-toggle="popover" data-trigger="hover"></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fame_system" id="fame_system-enabled" value="1" <?php echo ($music->config->fame_system == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="fame_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fame_system" id="fame_system-disabled" value="0" <?php echo ($music->config->fame_system == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="fame_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Views Count</label>
+                                <input type="text" id="views_count" name="views_count" class="form-control" value="<?php echo $music->config->views_count ?>">
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 pull-right">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">FFMPEG system settings</h6>
+                    <div class="ffmpeg-settings-alert"></div>
+                    <form class="ffmpeg-settings" method="POST">
+                        <p>This system will compress, convert, and optimzise videos to mp4. This system require "ffmpeg" to be installed in your server. </p><br>
+                        <label for="upload_system">FFMPEG System </label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ffmpeg_system" id="ffmpeg_system-enabled" value="on" <?php echo ($music->config->ffmpeg_system == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="ffmpeg_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ffmpeg_system" id="ffmpeg_system-disabled" value="off" <?php echo ($music->config->ffmpeg_system == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="ffmpeg_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        How to install FFMPEG?<br>
+                        <a href="https://www.vultr.com/docs/how-to-install-ffmpeg-on-centos" target="_blank">Install FFMPEG on Linux Centos</a><br>
+                        <a href="https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg" target="_blank">Install FFMPEG on Linux Ubuntu | Windows</a><br>If you still can't install FFMPEG, please contact your hosting provider, and they shall install it. <br><br>
+                        <?php if ($enabled == false): ?>
+                        <p style="color: red">shell_exec() has been disabled for security reasons, please contact your host provider to enable it. shell_exec is required to enable this system.</p><br>
+                        <?php endif; ?>
+                        <div class="form-group  form-float">
+                            <br><div class="form-line">
+                            <input type="text" id="ffmpeg_binary_file" name="ffmpeg_binary_file" class="form-control" value="{{CONFIG ffmpeg_binary_file}}">
+                            <?php if (!$music->config->ffmpeg): ?>
+                            <label class="form-label" style="color: red;">
+                                FFmpeg binary does not exist on path: {{CONFIG ffmpeg_binary_file}}
+                            </label>
+                            <?php else: ?>
+                            <label class="form-label">
+                                FFmpeg binary file path: on Linux(/usr/bin/ffmpeg) or Windows(C:\\ffmpeg\bin\ffmpeg.exe)
+                            </label>
+                            <?php endif; ?>
+                        </div>
+                        </div>
+                        <?php if ($music->config->ffmpeg_system == 'on' && $enabled == true): ?>
+                        <label class="form-check-label" for="comments_default_num">Convert video speed</label>
+                        <select class="form-control show-tick" id="convert_speed" name="convert_speed">
+                            <option value="ultrafast" <?php echo ($music->config->convert_speed == 'ultrafast') ? 'selected': '';?>>Ultrafast</option>
+                            <option value="superfast" <?php echo ($music->config->convert_speed == 'superfast') ? 'selected': '';?>>Superfast</option>
+                            <option value="veryfast" <?php echo ($music->config->convert_speed == 'veryfast') ? 'selected': '';?>>Veryfast</option>
+                            <option value="faster" <?php echo ($music->config->convert_speed == 'faster') ? 'selected': '';?>>Faster</option>
+                            <option value="fast" <?php echo ($music->config->convert_speed == 'fast') ? 'selected': '';?>>Fast</option>
+                            <option value="medium" <?php echo ($music->config->convert_speed == 'medium') ? 'selected': '';?>>Medium</option>
+                            <option value="slow" <?php echo ($music->config->convert_speed == 'slow') ? 'selected': '';?>>Slow</option>
+                            <option value="slower" <?php echo ($music->config->convert_speed == 'slower') ? 'selected': '';?>>Slower</option>
+                            <option value="veryslow" <?php echo ($music->config->convert_speed == 'veryslow') ? 'selected': '';?>>Veryslow</option>
+                        </select>
+                        <br><br><p>"Convert video speed" affect the encoding speed. Using a slower preset gives you better compression, or quality per filesize, whereas faster presets give you worse compression and higher filesize.</p><br><?php endif; ?>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Prevent Login Settings</h6>
+
+                    <div class="lock-settings-alert"></div>
+                    <div class="alert lock-settings-test-alert"></div>
+                    <form class="lock-settings" method="POST">
+                        <label for="prevent_system">Prevent Login System <span class="black" data-toggle="popover" data-trigger="hover"></span></label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="prevent_system" id="prevent_system-enabled" value="1" <?php echo ($music->config->prevent_system == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="prevent_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="prevent_system" id="prevent_system-disabled" value="0" <?php echo ($music->config->prevent_system == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="prevent_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Bad Login Limit</label>
+                                <input type="text" id="bad_login_limit" name="bad_login_limit" class="form-control" value="<?php echo $music->config->bad_login_limit ?>">
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Lockout Time (Minutes)</label>
+                                <input type="text" id="lock_time" name="lock_time" class="form-control" value="<?php echo $music->config->lock_time ?>">
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+    
+
+$(function() {
+    $('#upload_system_type').change(function(event) {
+        if ($(this).val() == 1) {
+            $('#p_f_users_').removeClass('hidden');
+            $('#all_users_').addClass('hidden');
+        }
+        else{
+            $('#all_users_').removeClass('hidden');
+            $('#p_f_users_').addClass('hidden');
+        }
+    });
+
+    var form_fame_settings = $('form.fame-settings');
+
+    form_fame_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_fame_settings.find('button').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_fame_settings.find('button').text('Save');
+                $('.fame-settings-test-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.fame-settings-test-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_lock_settings = $('form.lock-settings');
+
+    form_lock_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_lock_settings.find('button').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_lock_settings.find('button').text('Save');
+                $('.lock-settings-test-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.lock-settings-test-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_user_settings = $('form.user-settings');
+
+    form_user_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_user_settings.find('button').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_user_settings.find('button').text('Save');
+                $('.user-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.user-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var ffmpeg_settings = $('form.ffmpeg-settings');
+    ffmpeg_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            ffmpeg_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                ffmpeg_settings.find('.waves-effect').text('Save');
+                $('.ffmpeg-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.ffmpeg-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+});
+</script>

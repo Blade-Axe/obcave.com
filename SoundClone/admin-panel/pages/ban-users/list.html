@@ -1,0 +1,16 @@
+
+<tr class="setting-banlist" id="ipid-{{BANNEDIP_ID}}" data_selected="{{BANNEDIP_ID}}">
+   <td><input type="checkbox" id="check-data-{{BANNEDIP_ID}}" class="delete-checkbox filled-in"><label for="check-data-{{BANNEDIP_ID}}"></label></td>
+   <td>{{BANNEDIP_ID}}</td>
+   <td>
+      <div class="ajax-time" title="{{BANNEDIP_TIME}}">
+         {{BANNEDIP_TIME}}
+      </div>
+   </td>
+   <td>
+     {{BANNEDIP_ADDR}}
+   </td>
+   <td>
+      <a href="javascript:void(0)" class="btn bg-danger admn_table_btn" onclick="DeleteBan('{{BANNEDIP_ID}}','hide')">Delete</a>
+   </td>
+</tr>

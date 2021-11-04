@@ -1,0 +1,24 @@
+<tr id="{{ALBUM id}}" data_selected="{{ALBUM id}}">
+    <td><input type="checkbox" id="check-data-{{ALBUM id}}" class="delete-checkbox filled-in"><label for="check-data-{{ALBUM id}}"></label></td>
+    <td>{{ALBUM id}}</td>
+    <td>
+        <img src="{{ALBUM thumbnail}}" style="display: block;margin: 0 auto;width: 90px;border-radius: 5px;">
+    </td>
+    <td>
+        <a href="{{LINK user}}/<?php echo $data['ALBUM_DATA']->publisher->username;?>" target="_blank">
+            <img src="<?php echo $data['ALBUM_DATA']->publisher->avatar;?>" class="td-avatar rounded-circle" alt="user avatar"> <?php echo $data['ALBUM_DATA']->publisher->name;?>
+        </a>
+    </td>
+    <td>
+        <p>{{ALBUM title}}</p>
+        <small>{{ALBUM description}}</small>
+    </td>
+    <td><b>{{ALBUM category_name}}</b></td>
+    <td><a href="{{LINK album}}/{{ALBUM album_id}}" target="_blank"><?php echo count($data['ALBUM_DATA']->songs);?></a></td>
+    <td>{{CONFIG currency_symbol}}{{ALBUM price}}</td>
+    <td>{{ALBUM time_formatted}}</td>
+    <td>
+        <a href="{{LINK edit-album}}/{{ALBUM album_id}}" target="_blank" class="btn bg-success admn_table_btn">Edit</a>
+        <button type="button" class="btn bg-danger admn_table_btn" onclick="Wo_DeleteAlbum('{{ALBUM id}}','hide',this);" data-id="{{ALBUM id}}">Delete</button>
+    </td>
+</tr>

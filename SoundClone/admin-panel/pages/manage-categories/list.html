@@ -1,0 +1,10 @@
+<tr id="<?php echo $data->id;?>" data_selected="<?php echo $data->id;?>">
+	<td><input type="checkbox" id="check-data-<?php echo $data->id;?>" class="delete-checkbox filled-in"><label for="check-data-<?php echo $data->id;?>"></label></td>
+   <td><?php echo $data->id;?></td>
+   <td style="background-color: <?php echo $data->color;?>;color: #ffffff;vertical-align: inherit;text-align: center;"><img src="<?php echo getMedia($data->background_thumb);?>" style="display: block;margin: 0 auto;width: 100px;"></td>
+   <td><?php echo $data->cateogry_name;?></td>
+   <td>
+      <button type="button" class="btn bg-success admn_table_btn" data-id="<?php echo $data->id;?>" data-toggle="modal" data-target="#defaultModal">Edit</button>
+      <button onclick="Wo_DeleteGender('<?php echo $data->id;?>','hide');" type="button" class="btn bg-danger admn_table_btn">Delete</button>
+   </td>
+</tr>

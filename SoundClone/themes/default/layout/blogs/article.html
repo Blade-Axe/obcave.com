@@ -1,0 +1,96 @@
+<div class="ma_page_content" id="container_blog">
+    <div class="ma_pc_inner">
+		<div class="page_padding">
+			<div class="content ds_read_blog">
+				<div class="ds_blog_catz"><a href="{{LINK }}blogs/<?php echo $data['category'] . '_' . url_slug(html_entity_decode($data['category_text']));?>" data-load="/blogs/<?php echo $data['category'] . '_' . url_slug(html_entity_decode($data['category_text']));?>"><?php echo $data['category_text'];?></a></div>
+				<h2><?php echo $data['title'];?></h2>
+				<div class="ds_read_blog_hdr">
+					<a href="<?php echo $data['created_by']->url;?>" data-load="<?php echo $data['created_by']->username;?>"><img src="<?php echo $data['created_by']->avatar;?>" alt="<?php echo $data['created_by']->name;?>" class="ds_who_blog_authr"> <?php echo $data['created_by']->name;?></a>
+					<span class="middot">·</span>
+					<span class=" ajax-time" title="<?php echo date('c', $data['created_at']); ?>"><?php echo Time_Elapsed_String($data['created_at']);?></span>
+					<span class="middot">·</span>
+					<span><?php echo $data['view'];?> {{LANG Views}}</span>
+				</div>
+				<blockquote><?php echo $data['description'];?></blockquote>
+                <div class="ds_read_blog_thumb">
+					<img src="<?php echo $data['thumbnail'];?>" alt="<?php echo $data['title'];?>">
+					<div class="share_btn">
+						<a href="https://www.facebook.com/sharer.php?u=<?php echo $data['url'];?>" target="_blank" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#337ab7"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z"></path></svg></a>
+						<a href="http://twitter.com/intent/tweet?text=<?php echo $data['title'];?>&amp;url=<?php echo $data['url'];?>" target="_blank" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#55acee"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26 17.56,8.33C18.06,7.97 18.47,7.5 18.68,6.86C18.16,7.14 17.63,7.38 16.97,7.5C15.42,5.63 11.71,7.15 12.37,9.95C9.76,9.79 8.17,8.61 6.85,7.16C6.1,8.38 6.75,10.23 7.64,10.74C7.18,10.71 6.83,10.57 6.5,10.41C6.54,11.95 7.39,12.69 8.58,13.09C8.22,13.16 7.82,13.18 7.44,13.12C7.81,14.19 8.58,14.86 9.9,15C9,15.76 7.34,16.29 6,16.08C7.15,16.81 8.46,17.39 10.28,17.31C14.69,17.11 17.64,13.95 17.71,9.33Z"></path></svg></a>
+						<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $data['url'];?>" target="_blank" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#007bb6"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path></svg></a>
+						<a href="http://pinterest.com/pin/create/button/?url=<?php echo $data['url'];?>" target="_blank" title="Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#cb2027"><path d="M13,16.2C12.2,16.2 11.43,15.86 10.88,15.28L9.93,18.5L9.86,18.69L9.83,18.67C9.64,19 9.29,19.2 8.9,19.2C8.29,19.2 7.8,18.71 7.8,18.1C7.8,18.05 7.81,18 7.81,17.95H7.8L7.85,17.77L9.7,12.21C9.7,12.21 9.5,11.59 9.5,10.73C9.5,9 10.42,8.5 11.16,8.5C11.91,8.5 12.58,8.76 12.58,9.81C12.58,11.15 11.69,11.84 11.69,12.81C11.69,13.55 12.29,14.16 13.03,14.16C15.37,14.16 16.2,12.4 16.2,10.75C16.2,8.57 14.32,6.8 12,6.8C9.68,6.8 7.8,8.57 7.8,10.75C7.8,11.42 8,12.09 8.34,12.68C8.43,12.84 8.5,13 8.5,13.2A1,1 0 0,1 7.5,14.2C7.13,14.2 6.79,14 6.62,13.7C6.08,12.81 5.8,11.79 5.8,10.75C5.8,7.47 8.58,4.8 12,4.8C15.42,4.8 18.2,7.47 18.2,10.75C18.2,13.37 16.57,16.2 13,16.2M20,2H4C2.89,2 2,2.89 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z"></path></svg></a>
+					</div>
+				</div>
+				<article><?php echo nl2br( htmlspecialchars_decode( $data['content'] ) );?></article>
+				<?php
+					$tag_html = '';
+					$tags = explode(',' , $data['tags'] );
+					foreach ($tags as $key => $tag) {
+						if(!empty($tag)){
+							$tag_html .= '<li><a href="'. $music->config->site_url .'/blogs/tag/'.trim($tag).'" data-load="/blogs/tag/'.trim($tag).'">#'.$tag.'</a></li>';
+						}
+					}
+					if( !empty($tag_html) ){
+				?>
+					<!--<p class="bold">{{LANG Tags}}</p>-->
+					<ul class="list-unstyled ds_read_blog_tags">
+						<?php echo $tag_html;?>
+					</ul>
+				<?php } ?>
+			</div>
+
+			<div class="ssong_comments ssong_comments_main">
+				<div class="write_comment">
+					<?php if (IS_LOGGED) { ?>
+					<img src="{{ME avatar}}" alt="" class="u_avatar">
+					<?php } else {?>
+					<img src="<?php echo getMedia($music->user_default_avatar)?>" alt="" class="u_avatar">
+					<?php } ?>
+					<!--<input type="text" onkeyup="registerComment(this.value, $('#current-track').val(), event, $(this));" title="{{LANG Write a comment and press enter}}" placeholder="{{LANG Write a comment and press enter}}" value="" class="comment_input" >-->
+					<textarea title="{{LANG Write a comment and press enter}}" data-article-id="{{id}}" placeholder="{{LANG Write a comment and press enter}}" value="" class="blog_comment_input"  oninput="count_char(this,'#charsLeft_a_{{id}}')"></textarea>
+					<?php if ($music->config->maxCharacters != 10000) { ?>
+					<span id="charsLeft_a_{{id}}" data_num="{{CONFIG maxCharacters}}">{{CONFIG maxCharacters}}</span>
+					<?php } ?>
+				</div>
+				<h3 class="comm_count"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"></path></svg> {{comment_count}} {{LANG comments}}</h3>
+				<ul class="list-unstyled mb-0 comment_list comment-list-{{id}}" >
+					{{comment_list}}
+				</ul>
+				<?php if($music->comment_count > 0){?>
+				<div class="text-center see_all">
+					<a href="javascript:void(0); loadMore('blog_comments', 'blog_comments');" id="load-more-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg> {{LANG Load More}}</a>
+				</div>
+				<?php } ?>
+			</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".blog_comment_input").emojioneArea({
+                        useInternalCDN: true,
+                        events: {
+                            keyup: function (editor, event) {
+                            	<?php if ($music->config->maxCharacters != 10000) { ?>
+                            	id = $( $(this)[0].source[0]).attr('data-article-id');
+                                $($(".blog_comment_input")).limit("{{CONFIG maxCharacters}}", '#charsLeft_a_'+id);
+                            <?php } ?>
+                                let emojioneArea = this; //this is instance of EmojioneArea
+                                if (event.which === 13 && !event.shiftKey) {
+                                    // $scope.onPressKeyTextarea(event);
+									var audioid = $( $(this)[0].source[0]).attr('data-article-id');
+                                    registerBlogComment(emojioneArea.getText(), audioid, event, $(this));
+                                    emojioneArea.setText('');
+                                    emojioneArea.hidePicker();
+                                    emojioneArea.editor.focus();
+                                    event.preventDefault();
+                                }
+                            }
+                        },
+                        search: false,
+                        recentEmojis: false,
+                        filtersPosition: "bottom",
+                        tones: false,
+                        autocomplete: true,
+                        filters: {animals_nature: false, food_drink: false, activity: false, travel_places: false, objects: false, symbols: false, flags: false}
+                    });
+</script>

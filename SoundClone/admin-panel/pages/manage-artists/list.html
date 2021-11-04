@@ -1,0 +1,67 @@
+<tr id="list-{{REQUEST id}}" data-userid="{{REQUEST id}}" data_selected="{{REQUEST id}}">
+  <td><input type="checkbox" id="check-data-{{REQUEST id}}" class="delete-checkbox filled-in"><label for="check-data-{{REQUEST id}}"></label></td>
+  <td>{{REQUEST id}}</td>
+  <td>
+    <a href="{{USER url}}"><img src="{{USER avatar}}" class="td-avatar" alt="user avatar"> {{USER username}}</a>
+    <span class="pointer toggle-verification-request" data-userid="{{REQUEST id}}">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+   </span>
+  </td>
+  <td>
+    {{REQUEST name}}
+  </td>
+  <td>         <button type="button" data-toggle="modal" class="btn bg-info admn_table_btn toggle-verification-request" data-target="#review-verif-request-info-{{REQUEST id}}">Show Info</button>
+      </td>
+  <td>
+    {{CATEGORYNAME}}
+  </td>
+  <td>
+    <button class="verify btn bg-success admn_table_btn" onclick="Verify(<?php echo $data['USER_DATA']->id?>,<?php echo $data['REQUEST_DATA']->id?>,'<?php echo $data['USER_DATA']->username?>','hide');">Verify
+      </button>
+    <button class="delete-verification btn bg-danger admn_table_btn" onclick="DeleteVerification(<?php echo $data['USER_DATA']->id?>,<?php echo $data['REQUEST_DATA']->id?>,'<?php echo $data['USER_DATA']->username?>','hide');">Ignore
+      </button>
+  </td>
+</tr>
+
+<div class="modal fade" id="review-verif-request-info-{{REQUEST id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Verification Info</h5>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<a href="<?php echo GetMedia($data['REQUEST_DATA']->passport); ?>" class="image-popup-gallery-item-31">
+							<div class="image-hover">
+								<img src="<?php echo GetMedia($data['REQUEST_DATA']->passport); ?>" class="rounded" alt="image" style="width: 100%;min-height: 200px;max-height: 200px;">
+								<div class="image-hover-body rounded">
+									<div><h4 class="mb-2">Passport</h4></div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a href="<?php echo GetMedia($data['REQUEST_DATA']->photo); ?>" class="image-popup-gallery-item-31">
+							<div class="image-hover">
+								<img src="<?php echo GetMedia($data['REQUEST_DATA']->photo); ?>" class="rounded" alt="image" style="width: 100%;min-height: 200px;max-height: 200px;">
+								<div class="image-hover-body rounded">
+									<div><h4 class="mb-2">Photo</h4></div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<br>
+				<p class="mb-1"><span class="badge bg-success-bright text-success">Email</span></p>
+				<p>{{USER email}}</p>
+				<p class="mb-1"><span class="badge bg-info-bright text-info">Details</span></p>
+				<p>{{REQUEST website}}</p>
+				<p>{{REQUEST details}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="ma_page_content" id="container_blog">
+	<div class="ma_pc_inner">
+		<div class="page_padding">
+            <div class="sptlight_head">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 4V18C2 18 2 20 4 20H20C20 20 22 20 22 18V4H2M9 13H5V7H9V13M19 13H11V11H19V13M19 9H11V7H19V9Z"></path></svg> {{LANG Blogs}}
+				<?php if($music->config->allow_user_create_blog == 'on' && IS_LOGGED){?>
+					<br><br><a href="{{LINK }}create-article" class="btn btn-primary btn-mat hide_hd_btn" data-load="create-article">{{LANG Create new article}}</a>
+				<?php } ?>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="blog_articles" >
+						<?php if( $data['records'] > 0 ){?>
+							<div class="row">{{html_content}}</div>
+						<?php } else { ?>
+							<div class="no-track-found bg_light"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3,7H9V13H3V7M3,3H21V5H3V3M21,11V13H11V11H21M3,15H17V17H3V15M3,19H21V21H3V19Z"></path></svg>{{LANG No more articles}}</div>
+						<?php } ?>
+					</div>
+					<?php if( $data['records'] > 0 ){?>
+						<div class="text-center see_all">
+							<a href="javascript:void(0); loadMore('blogs', '');" id="load-more-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg> {{LANG Load More}}</a>
+						</div>
+					<?php } ?>
+				</div>
+				<input type="hidden" id="filter_type" value="<?php echo $data['active_category'];?>">
+				<input type="hidden" id="current_tag" value="<?php echo $data['current_tag'];?>">
+				<div class="col-md-3">
+					{{filters}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+
+<tr class="setting-invitation" data-invitation="<?php echo $data['id']; ?>" data_selected="<?php echo $data['id']; ?>">
+  <td><input type="checkbox" id="check-data-<?php echo $data['id']; ?>" class="delete-checkbox filled-in"><label for="check-data-<?php echo $data['id']; ?>"></label></td>
+  <td >
+     <?php echo $data['id']; ?>
+  </td>
+  <td >
+     <?php echo Time_Elapsed_String($data['posted']); ?>
+  </td>
+  <td>
+     <?php echo $data['code']; ?>
+  </td>
+  <td><?php echo $data['status']; ?></td>
+  <td>
+     <button class="btn bg-info admn_table_btn copy-invitation-url" id="<?php echo $data['id']; ?>" data-link="<?php echo $data['url']; ?>">Copy Link</button>
+     <button class="btn bg-danger admn_table_btn delete-admin-invitation" id="<?php echo $data['id']; ?>" onclick="DeleteBan(<?php echo $data['id']; ?>,'hide')">Delete</button>
+  </td>
+</tr>

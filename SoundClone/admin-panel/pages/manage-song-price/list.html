@@ -1,0 +1,9 @@
+<tr id="list-{{PRICE id}}" data_selected="{{PRICE id}}">
+	<td><input type="checkbox" id="check-data-{{PRICE id}}" class="delete-checkbox filled-in"><label for="check-data-{{PRICE id}}"></label></td>
+    <td>{{PRICE id}}</td>
+    <td id="price_text_{{PRICE id}}">{{PRICE price}}</td>
+    <td>
+        <a class="btn bg-success admn_table_btn edit-content" href="javascript:void(0);" data-id="{{PRICE id}}"  data-price="{{PRICE price}}">Edit</a>
+        <button class="btn bg-danger admn_table_btn" data-id="{{PRICE id}}" onclick="Wo_DeletePrice('{{PRICE id}}','hide');">Delete</button>
+    </td>
+</tr>

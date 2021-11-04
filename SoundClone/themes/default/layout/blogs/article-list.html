@@ -1,0 +1,13 @@
+<div class="col-md-6 blog_list" data-id="<?php echo $data['id'];?>">
+	<div class="content blog_list_innr">
+		<a href="{{LINK }}article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>" data-load="/article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>">
+			<img src="<?php echo $data['thumbnail'];?>" alt="<?php echo $data['title'];?>" class="avatar">
+		</a>
+		<div class="blog_list_info">
+			<div><?php echo $data['created_at'];?> <span class="middot">·</span> <a href="{{LINK }}blogs/<?php echo $data['category'] . '_' . url_slug(html_entity_decode($data['category_text']));?>" data-load="/blogs/<?php echo $data['category'] . '_' . url_slug(html_entity_decode($data['category_text']));?>"><?php echo $data['category_text'];?></a></div>
+			<h4><a href="{{LINK }}article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>" data-load="/article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>"><?php echo $data['title'];?></a></h4>
+			<!--<article><?php echo $data['description'];?></article>
+			<a class="btn btn-blog pull-right marginBottom10" href="{{LINK }}article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>" data-load="/article/<?php echo $data['id'] . '_' . url_slug(html_entity_decode($data['title']));?>">{{LANG READ MORE}}</a>-->
+		</div>
+	</div>
+</div>

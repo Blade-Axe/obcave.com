@@ -1,0 +1,48 @@
+<div class="ma_page_content">
+    <div class="ma_pc_inner">
+        <div class="page_padding">
+            <!-- Settings -->
+            <div class="sett_page">
+                <?php echo loadPage("settings/sidebar"); ?>
+                <div class="st_content">
+                    <div class="st_form">
+                        <h3>{{LANG Manage Sessions}}</h3>
+						<div class="table-responsive">
+                        <table id="manage-sessions" class="table ds_sess_table">
+                            <thead>
+                            <th>{{LANG Platform}}</th>
+                            <th>{{LANG Browser}}</th>
+                            <th>{{LANG Last Seen}}</th>
+                            <th>{{LANG Ip Address}}</th>
+                            <th>{{LANG Actions}}</th>
+                            </thead>
+                            <tbody>
+                            {{SESSION_LIST}}
+                            </tbody>
+                        </table>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Settings -->
+        </div>
+    </div>
+</div>
+<script>
+    function logOutSession(id) {
+        if (!confirm('Are you sure you want to log out from this device?')) {
+            return false;
+        }
+        $('#session_' + id).remove();
+        $.post("{{CONFIG ajax_url}}/user/delete_s?hash_id=" + getHashID(), {id: id}, function () {
+            $.post("{{CONFIG ajax_url}}/user/session_status?hash_id=" + getHashID(), function (data) {
+                if(data.status == 200) {
+                    setTimeout(UpdateLastSeen, 30000);
+                    $('#logged-out-modal').modal({
+                        show: true
+                    });
+                }
+            });
+        });
+    }
+</script>

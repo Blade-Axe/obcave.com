@@ -1,0 +1,38 @@
+<style>
+	.add-select-albums {
+		padding-left: 0;
+	}
+	.add-select-albums li {
+		padding: 10px;
+		min-width: 300px;
+		background: #545454;
+		width: 100%;
+		text-align: left;
+		display: block;
+		margin-bottom: 5px;
+		cursor: pointer;
+		border-radius: 3px;
+	}
+	.add-select-albums li.active {
+		background: #f98f1d;
+		color: #fff;
+	}
+</style>
+<div class="modal fade" id="albums" role="dialog" aria-labelledby="albums" aria-hidden="true" data-id="{{t_id}}">
+	<div class="modal-dialog mat_box" role="document">
+		<div class="modal-content add_to_plist">
+			<div class="modal-header">
+				<h5 class="modal-title">{{LANG Select albums}} </h5>
+			</div>
+			<div class="modal-body">
+				<ul class="add-select-albums">
+					{{list}}
+				</ul>
+			</div>	
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{LANG Cancel}}</button>
+				<button type="button" class="btn btn-primary btn-mat" onclick="addToAlbum();">{{LANG Add}}</button>
+			</div>
+		</div>
+	</div>
+</div>

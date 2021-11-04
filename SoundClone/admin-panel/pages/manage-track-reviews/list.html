@@ -1,0 +1,22 @@
+<tr id="{{SONG id}}" data_selected="{{SONG id}}">
+    <td><input type="checkbox" id="check-data-{{SONG id}}" class="delete-checkbox filled-in"><label for="check-data-{{SONG id}}"></label></td>
+    <td>{{ID}}</td>
+    <td style="vertical-align: inherit;text-align: center;">
+        <a href="{{LINK track}}/<?php echo $data['SONG_DATA']->audio_id;?>" target="_blank">
+        <img src="{{SONG thumbnail}}" style="display: block;margin: 0 auto;width: 100px;" alt="{{SONG title}}" title="{{SONG title}}">
+        </a>
+    </td>
+    <td>
+        <a href="{{LINK track}}/<?php echo $data['USER_DATA']->username;?>" target="_blank">
+            <img src="<?php echo $data['USER_DATA']->avatar;?>" class="td-avatar" alt="user avatar"> <?php echo $data['USER_DATA']->name;?>
+        </a>
+    </td>
+    <td>
+        <small>{{DESC}}</small>
+    </td>
+    <td>{{RATE}}</td>
+    <td><?php echo time_Elapsed_String($data['TM']);?></td>
+    <td>
+        <button type="button" class="btn bg-danger admn_table_btn btn-delete-album" data-id="{{ID}}" onclick="Wo_DeleteReview('{{SONG id}}','hide');">Delete</button>
+    </td>
+</tr>

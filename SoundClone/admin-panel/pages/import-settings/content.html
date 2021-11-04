@@ -1,0 +1,208 @@
+<?php
+$music->config->ffmpeg  = is_executable($music->config->ffmpeg_binary_file);
+function isEnabled($func) {
+return is_callable($func) && false === stripos(ini_get('disable_functions'), $func);
+}
+$enabled = true;
+if (!isEnabled('shell_exec')) {
+$enabled = false;
+}
+?>
+<div class="container-fluid">
+    <div>
+        <h3>Import Settings</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Settings</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Import Settings</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+        <div class="col-lg-6 col-md-6 pull-left">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Sound Cloud Settings</h6>
+                    <div class="soundcloud-settings-alert"></div>
+                    <form class="soundcloud-settings" method="POST">
+                        <label for="soundcloud_import">SoundCloud Import</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soundcloud_import" id="soundcloud_import-enabled" value="on" <?php echo ($music->config->soundcloud_import == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="soundcloud_import-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soundcloud_import" id="soundcloud_import-disabled" value="off" <?php echo ($music->config->soundcloud_import == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="soundcloud_import-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Sound cloud clientID</label>
+                                <input type="text" id="sound_cloud_client_id" name="sound_cloud_client_id" class="form-control" value="{{CONFIG sound_cloud_client_id}}">
+                                
+                            </div>
+                        </div>
+                        <label for="soundcloud_go">Import SoundCloud GO+ tracks</label>&nbsp;&nbsp;<a href="https://help.soundcloud.com/hc/en-us/articles/115003453667-SoundCloud-Go-tracks" target="_blank">More info</a>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soundcloud_go" id="soundcloud_go-enabled" value="on" <?php echo ($music->config->soundcloud_go == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="soundcloud_go-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soundcloud_go" id="soundcloud_go-disabled" value="off" <?php echo ($music->config->soundcloud_go == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="soundcloud_go-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+			<div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Deezer Settings</h6>
+                    <div class="deezer-settings-alert"></div>
+                    <div class="deezer-settings-alert-danger"></div>
+                    <form class="deezer-settings" method="POST">
+                        <label for="deezer_import">Deezer Import</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="deezer_import" id="deezer_import-enabled" value="on" <?php echo ($music->config->deezer_import == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="deezer_import-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="deezer_import" id="deezer_import-disabled" value="off" <?php echo ($music->config->deezer_import == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="deezer_import-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                        <!-- <button type="button" class="btn btn-primary m-t-15 refresh" onclick="RefreshToken()">Refresh Token</button> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 pull-right">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Itunes Settings</h6>
+                    <div class="itunes-settings-alert"></div>
+                    <form class="itunes-settings" method="POST">
+                        <label for="itunes_import">Itunes Import</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="itunes_import" id="itunes_import-enabled" value="on" <?php echo ($music->config->itunes_import == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="itunes_import-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="itunes_import" id="itunes_import-disabled" value="off" <?php echo ($music->config->itunes_import == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="itunes_import-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="itunes_affiliate">Itunes Affiliate System</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="itunes_affiliate" id="itunes_affiliate-enabled" value="admin" <?php echo ($music->config->itunes_affiliate == 'admin') ? 'checked': '';?> onclick="handleClick(this);">
+                                <label class="form-check-label" for="itunes_affiliate-enabled">Admin</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="itunes_affiliate" id="itunes_affiliate-disabled" value="users" <?php echo ($music->config->itunes_affiliate == 'users') ? 'checked': '';?> onclick="handleClick(this);">
+                                <label class="form-check-label" for="itunes_affiliate-disabled" class="m-l-20">Users</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float itunes_partner_div" <?php echo $music->config->itunes_affiliate == 'users' ? 'style="display:none"' : ''; ?>>
+                            <div class="form-line">
+                                <label class="form-label">Itunes Partner Token</label>
+                                <input type="text" id="itunes_partner_token" name="itunes_partner_token" class="form-control" value="{{CONFIG itunes_partner_token}}">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+    
+function handleClick(self) {
+    if ($(self).val() == 'admin') {
+        $('.itunes_partner_div').slideDown();
+    }
+    else{
+        $('.itunes_partner_div').slideUp();
+    }
+}
+$(function() {
+    var form_soundcloud_settings = $('form.soundcloud-settings');
+    var form_itunes_settings = $('form.itunes-settings');
+    var form_deezer_settings = $('form.deezer-settings');
+
+    form_soundcloud_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_soundcloud_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_soundcloud_settings.find('.waves-effect').text('Save');
+                $('.soundcloud-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.soundcloud-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_itunes_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_itunes_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_itunes_settings.find('.waves-effect').text('Save');
+                $('.itunes-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.itunes-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_deezer_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_deezer_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_deezer_settings.find('.waves-effect').text('Save');
+                $('.deezer-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.deezer-settings-alert').empty();
+                }, 2000);
+            }
+            else if (data.status == 220) {
+                location.href = data.url;
+            }
+        }
+    });
+
+
+});
+</script>

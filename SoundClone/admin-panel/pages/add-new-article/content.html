@@ -1,0 +1,151 @@
+
+<div class="container-fluid">
+    <div>
+        <h3>Create New article</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Blogs</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Create New article</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-8 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Create New article</h6>
+                    <div class="add-settings-alert"></div>
+                    <form class="add-settings" method="POST">
+                        <label for="type">Category</label>
+                        <select class="form-control show-tick chosen-select" id="category" name="category">
+                            <?php
+                            $wo['blog_categories'] = blog_categories();
+                            foreach ($wo['blog_categories'] as $wo['category_key'] => $wo['category']) {
+                            ?>
+                                <option value="<?php echo $wo['category_key'];?>"><?php echo $wo['category'];?></option>
+                            <?php }?>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Title</label>
+                                <input type="text" id="title" name="title" class="form-control">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Description</label>
+                                <input type="text" id="description" name="description" class="form-control">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div class="form-group form-float">
+                            <div class="form-line"><div class="clearfix"></div>
+                                <br><br>
+                                <label class="form-label">Content (HTML allowed)</small></label>
+                                <textarea name="content" id="content" class="form-control" cols="30" rows="5"></textarea>
+                                
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div class="form-group form-float">
+                            <div class="form-line"><br><br>
+                                <label class="form-label">Thumbnail File <small>only: .jpg,.jpeg,.png,.gif allowed</small></label>
+                                <input type="file" id="thumbnail" name="thumbnail" class="form-control">
+                                
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Tags</label>
+                                <input type="text" id="tags" name="tags" class="form-control">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Create</button>
+                        <a class="btn btn-info m-t-15 waves-effect waves-light" href="<?php echo LoadAdminLinkSettings('manage-success-stories'); ?>">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+    <script>
+
+        $(function() {
+
+            tinymce.init({
+                selector: '#content',
+                height: 270,
+                entity_encoding : "raw",
+                paste_data_images: true,
+                image_advtab: true,
+                toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                toolbar2: "print preview media | forecolor backcolor",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "template paste textcolor colorpicker textpattern"
+                ],
+            });
+
+
+            var form_add_settings = $('form.add-settings');
+            form_add_settings.ajaxForm({
+                url: '{{CONFIG ajax_url}}/ap/add_new_blog_article',
+                beforeSend: function() {
+                    form_add_settings.find('.btn-primary').text('Please wait..');
+                },
+                beforeSubmit : function(arr, $form, options){
+                    //arr.splice(0, 1);
+                    tinymce.get("content").setContent(tinymce.activeEditor.getContent());
+                    document.getElementById("content").value=tinymce.activeEditor.getContent();
+                    arr.push({name:'content', value:btoa(unescape(encodeURIComponent($('#content').val())))});
+                    arr.push({name:'category', value:$('#category').val()})
+                },
+                success: function(data) {
+                    if (data.status == 200) {
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        $('.add-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Blog article added successfully</div>');
+                        setTimeout(function () {
+                            window.location.href = '<?php echo LoadAdminLinkSettings('manage-articles'); ?>';
+                        }, 1000);
+                    } else if (data.status == 400) {
+                        $('.add-settings-alert').html('<div class="alert alert-danger">'+data.message+'</div>');
+                        setTimeout(function () {
+                            $('.add-settings-alert').empty();
+                        }, 2000);
+                    }
+                    form_add_settings.find('.btn-primary').text('Create');
+                }
+            });
+        });
+    </script>

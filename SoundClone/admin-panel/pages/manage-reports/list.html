@@ -1,0 +1,18 @@
+<tr id="list-{{REPORT id}}" data_selected="{{REPORT id}}">
+    <td><input type="checkbox" id="check-data-{{REPORT id}}" class="delete-checkbox filled-in"><label for="check-data-{{REPORT id}}"></label></td>
+    <td>{{REPORT id}}</td>
+    <td>
+        <a href="{{REPORT link}}" target="_blank">
+            <img src="{{SONG thumbnail}}" style="width: 30px;float: left;"> &nbsp;{{SONG title}}
+        </a>
+    </td>
+    <td><a href="{{USER url}}"><img src="{{USER avatar}}" class="td-avatar" alt="user avatar"> {{USER username}}</a></td>
+    <td>{{REPORT description}}</td>
+    <td><?php echo Time_Elapsed_String($data['REPORT_DATA']->time);?></td>
+    <td>
+        <a class="btn bg-info admn_table_btn" href="{{REPORT link}}" target="_blank">View</a>
+        <a class="btn bg-success admn_table_btn ignore-report" href="javascript:void(0)"  data-id="{{REPORT id}}" onclick="IgnoreReport('{{REPORT id}}','hide')">Ignore</a>
+        <button class="btn bg-danger admn_table_btn delete-content" data-id="{{REPORT id}}" onclick="DeleteReport('{{REPORT id}}','hide')">Delete Report</button>
+        <button class="btn bg-danger admn_table_btn delete-song-content" data-id="{{REPORT track_id}}" onclick="DeleteSong('{{REPORT track_id}}','hide')">Delete Song</button>
+    </td>
+</tr>

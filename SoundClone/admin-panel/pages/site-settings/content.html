@@ -1,0 +1,580 @@
+<div class="container-fluid">
+    <div>
+        <h3>Site Settings</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Settings</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Site Settings</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Website Settings</h6>
+                    <div class="site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site Title</label>
+                                <input type="text" id="title" name="title" class="form-control" value="{{CONFIG title}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site Name</label>
+                                <input type="text" id="name" name="name" class="form-control" value="{{CONFIG name}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site E-mail</label>
+                                <input type="text" id="email" name="email" class="form-control" value="{{CONFIG email}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site Keywords</label>
+                                <input type="text" id="keyword" name="keyword" class="form-control" value="{{CONFIG keyword}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site Description</label>
+                                <textarea name="description" id="description" class="form-control" cols="30" rows="5">{{CONFIG description}}</textarea>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Site Server Key</label>
+                                <input type="text" id="server_key" name="server_key" class="form-control" value="{{CONFIG apps_api_key}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Facebook url</label>
+                                <input type="text" id="facebook_url" name="facebook_url" class="form-control" value="{{CONFIG facebook_url}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Twitter url</label>
+                                <input type="text" id="twitter_url" name="twitter_url" class="form-control" value="{{CONFIG twitter_url}}">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Google url</label>
+                                <input type="text" id="google_url" name="google_url" class="form-control" value="{{CONFIG google_url}}">
+                                
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Radio Stations Settings</h6>
+                    <div class="radiostation-settings-alert"></div>
+                    <form class="radiostation-settings" method="POST">
+                        <label for="radio_station_import">Radio Stations</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio_station_import" id="radio_station_import-enabled" value="on" <?php echo ($music->config->radio_station_import == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="radio_station_import-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio_station_import" id="radio_station_import-disabled" value="off" <?php echo ($music->config->radio_station_import == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="radio_station_import-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-check-label" for="rapidapi_key">Rapid API - Radio Stations</label>
+                                <div>You can register api to get more than 30,000 radio stations.<br> To get started, <a href="https://rapidapi.com/auth?referral=/developer" target="_blank">Register Here</a>.</div>
+                                <br>
+                                <input type="text" id="rapidapi_key" name="rapidapi_key" class="form-control" value="{{CONFIG rapidapi_key}}">
+
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Point System Settings</h6>
+                    <div class="payment-settings-alert"></div>
+                    <form class="payment-settings" method="POST">
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="point_system" id="point_system-enabled" value="on" <?php echo ($music->config->point_system == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="point_system-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="point_system" id="point_system-disabled" value="off" <?php echo ($music->config->point_system == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="point_system-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">1 point = ?<?php echo $music->config->currency_symbol;?></label>
+                                <input type="text" name="point_system_points_to_dollar" class="form-control" value="<?php echo $music->config->point_system_points_to_dollar;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on comment</label>
+                                <input type="text" name="point_system_comment_cost" class="form-control" value="<?php echo $music->config->point_system_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on upload new song</label>
+                                <input type="text" name="point_system_upload_cost" class="form-control" value="<?php echo $music->config->point_system_upload_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on replay to comment</label>
+                                <input type="text" name="point_system_replay_comment_cost" class="form-control" value="<?php echo $music->config->point_system_replay_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on like some one track</label>
+                                <input type="text" name="point_system_like_track_cost" class="form-control" value="<?php echo $music->config->point_system_like_track_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on Dislike some one track</label>
+                                <input type="text" name="point_system_dislike_track_cost" class="form-control" value="<?php echo $music->config->point_system_dislike_track_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on like some one comment</label>
+                                <input type="text" name="point_system_like_comment_cost" class="form-control" value="<?php echo $music->config->point_system_like_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on re-post track</label>
+                                <input type="text" name="point_system_repost_cost" class="form-control" value="<?php echo $music->config->point_system_repost_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on download track</label>
+                                <input type="text" name="point_system_track_download_cost" class="form-control" value="<?php echo $music->config->point_system_track_download_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on like blog comment</label>
+                                <input type="text" name="point_system_like_blog_comment_cost" class="form-control" value="<?php echo $music->config->point_system_like_blog_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on dislike comment</label>
+                                <input type="text" name="point_system_unlike_comment_cost" class="form-control" value="<?php echo $music->config->point_system_unlike_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on dislike blog comment</label>
+                                <input type="text" name="point_system_unlike_blog_comment_cost" class="form-control" value="<?php echo $music->config->point_system_unlike_blog_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on import track</label>
+                                <input type="text" name="point_system_import_cost" class="form-control" value="<?php echo $music->config->point_system_import_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on purchase track</label>
+                                <input type="text" name="point_system_purchase_track_cost" class="form-control" value="<?php echo $music->config->point_system_purchase_track_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on user go PRO</label>
+                                <input type="text" name="point_system_go_pro_cost" class="form-control" value="<?php echo $music->config->point_system_go_pro_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on review some one track</label>
+                                <input type="text" name="point_system_review_track_cost" class="form-control" value="<?php echo $music->config->point_system_review_track_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on report some one track</label>
+                                <input type="text" name="point_system_report_track_cost" class="form-control" value="<?php echo $music->config->point_system_report_track_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on report comment</label>
+                                <input type="text" name="point_system_report_comment_cost" class="form-control" value="<?php echo $music->config->point_system_report_comment_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on add to playlist</label>
+                                <input type="text" name="point_system_add_to_playlist_cost" class="form-control" value="<?php echo $music->config->point_system_add_to_playlist_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on create new playlist</label>
+                                <input type="text" name="point_system_create_new_playlist_cost" class="form-control" value="<?php echo $music->config->point_system_create_new_playlist_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on user update his profile picture - 1st Time only</label>
+                                <input type="text" name="point_system_update_profile_picture_cost" class="form-control" value="<?php echo $music->config->point_system_update_profile_picture_cost;?>">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Points on user update his profile cover - 1st Time only</label>
+                                <input type="text" name="point_system_update_profile_cover_cost" class="form-control" value="<?php echo $music->config->point_system_update_profile_cover_cost;?>">
+                                
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Other Settings</h6>
+                    <div class="other-settings-alert"></div>
+                    <form class="other-settings" method="POST">
+                        <label for="allow_user_create_blog">Users can create blog articles</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="allow_user_create_blog" id="allow_user_create_blog-enabled" value="on" <?php echo ($music->config->allow_user_create_blog == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="allow_user_create_blog-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="allow_user_create_blog" id="allow_user_create_blog-disabled" value="off" <?php echo ($music->config->allow_user_create_blog == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="allow_user_create_blog-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-float">
+                            <label class="form-check-label" for="max_upload">Wave Color</label>
+                            <!--#f98f1d-->
+                            <input type="color" class="form-control" name="waves_color" value="<?php echo $music->config->waves_color;?>" style="height: 60px;">
+                        </div>
+
+                        <div class="form-group form-float">
+                            <label class="form-check-label" for="max_upload">Max Upload Size</label>
+                            <select class="form-control show-tick" id="max_upload" name="max_upload" tabindex="-98">
+                                <option value="2000000" <?php if($music->config->max_upload == '2000000'){ echo "selected";} ?>>2MB</option>
+                                <option value="6000000" <?php if($music->config->max_upload == '6000000'){ echo "selected";} ?>>6MB</option>
+                                <option value="12000000" <?php if($music->config->max_upload == '12000000'){ echo "selected";} ?>>12MB</option>
+                                <option value="24000000" <?php if($music->config->max_upload == '24000000'){ echo "selected";} ?>>24MB</option>
+                                <option value="48000000" <?php if($music->config->max_upload == '48000000'){ echo "selected";} ?>>48MB</option>
+                                <option value="96000000" <?php if($music->config->max_upload == '96000000'){ echo "selected";} ?>>96MB</option>
+                                <option value="256000000" <?php if($music->config->max_upload == '256000000'){ echo "selected";} ?>>256MB</option>
+                                <option value="512000000" <?php if($music->config->max_upload == '512000000'){ echo "selected";} ?>>512MB</option>
+                                <option value="1000000000" <?php if($music->config->max_upload == '1000000000'){ echo "selected";} ?>>1GB</option>
+                                <option value="10000000000" <?php if($music->config->max_upload == '10000000000'){ echo "selected";} ?>>10GB</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-float">
+                            <label class="form-check-label" for="user_max_upload">Max User Upload Size</label>
+                            <select class="form-control show-tick" id="user_max_upload" name="user_max_upload" tabindex="-98">
+                                <option value="2000000" <?php if($music->config->user_max_upload == '2000000'){ echo "selected";} ?>>2MB</option>
+                                <option value="6000000" <?php if($music->config->user_max_upload == '6000000'){ echo "selected";} ?>>6MB</option>
+                                <option value="12000000" <?php if($music->config->user_max_upload == '12000000'){ echo "selected";} ?>>12MB</option>
+                                <option value="24000000" <?php if($music->config->user_max_upload == '24000000'){ echo "selected";} ?>>24MB</option>
+                                <option value="48000000" <?php if($music->config->user_max_upload == '48000000'){ echo "selected";} ?>>48MB</option>
+                                <option value="96000000" <?php if($music->config->user_max_upload == '96000000'){ echo "selected";} ?>>96MB</option>
+                                <option value="256000000" <?php if($music->config->user_max_upload == '256000000'){ echo "selected";} ?>>256MB</option>
+                                <option value="512000000" <?php if($music->config->user_max_upload == '512000000'){ echo "selected";} ?>>512MB</option>
+                                <option value="1000000000" <?php if($music->config->user_max_upload == '1000000000'){ echo "selected";} ?>>1GB</option>
+                                <option value="10000000000" <?php if($music->config->user_max_upload == '10000000000'){ echo "selected";} ?>>10GB</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-float">
+                            <label for="maxCharacters">Max Allowed Characters Length</label>
+                            <select class="form-control show-tick" id="maxCharacters" name="maxCharacters">
+                              <option value="80"   <?php echo ($music->config->maxCharacters == 80) ? ' selected': '';?>>80 Characters</option>
+                              <option value="160"  <?php echo ($music->config->maxCharacters == 160) ? ' selected': '';?>>160 Characters</option>
+                              <option value="320"  <?php echo ($music->config->maxCharacters == 320) ? ' selected': '';?>>320 Characters</option>
+                              <option value="640"  <?php echo ($music->config->maxCharacters == 640) ? ' selected': '';?>>640 Characters</option>
+                              <option value="1280" <?php echo ($music->config->maxCharacters == 1280) ? ' selected': '';?>>1280 Characters</option>
+                              <option value="5000" <?php echo ($music->config->maxCharacters == 5000) ? ' selected': '';?>>5000 Characters</option>
+                              <option value="10000" <?php echo ($music->config->maxCharacters == 10000) ? ' selected': '';?>>Unlimited</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Censored Words</label>
+                                <input type="text" id="censored_words" name="censored_words" class="form-control" value="{{CONFIG censored_words}}">
+                                
+                            </div>
+                        </div><br>
+                        <label class="form-check-label" for="language">Default Language</label>
+                        <select class="form-control show-tick" id="language" name="language">
+                        	<option value="">-- Please select --</option>
+                            <?php 
+                            $langs__footer = $music->langs;
+						    $langs_html    = '';
+						    foreach ($langs__footer as $key => $language) {
+						        $lang_explode = explode('.', $language);
+						        $language     = $lang_explode[0];
+						        $language_    = ucfirst($language);
+						        $selected = ($music->config->language == $language) ? 'selected': '';
+						        $langs_html .= '<option value="' . $language . '" ' . $selected . '>' . $language_ . '</option>';
+						    }
+						    echo $langs_html;
+                            ?>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br>
+                        <!-- <label class="form-check-label" for="verification_badge-enabled">Verification badge</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="verification_badge" id="verification_badge-enabled" value="on" <?php echo ($music->config->verification_badge == 'on') ? 'checked': '';?>>
+                            <label class="form-check-label" for="verification_badge-enabled">Enabled</label>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="verification_badge" id="verification_badge-disabled" value="off" <?php echo ($music->config->verification_badge == 'off') ? 'checked': '';?>>
+                            <label class="form-check-label" for="verification_badge-disabled" class="m-l-20">Disabled</label>
+                        </div> -->
+
+                        <div class="clearfix"></div>
+                        <br>
+                        <label for="multiple_upload">Multiple song upload</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="multiple_upload" id="multiple_upload-enabled" value="on" <?php echo ($music->config->multiple_upload == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="multiple_upload-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="multiple_upload" id="multiple_upload-disabled" value="off" <?php echo ($music->config->multiple_upload == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="multiple_upload-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Google Analytics ID</label>
+                                <input type="text" id="google" name="google" class="form-control" value="{{CONFIG google}}">
+                                
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Recaptcha Settings</h6>
+                    <div class="recaptcha-settings-alert"></div>
+                    <form class="recaptcha-settings" method="POST">
+                        <label for="recaptcha">Recaptcha</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recaptcha" id="recaptcha-enabled" value="on" <?php echo ($music->config->recaptcha == 'on') ? 'checked': '';?>>
+                                <label class="form-check-label" for="recaptcha-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recaptcha" id="recaptcha-disabled" value="off" <?php echo ($music->config->recaptcha == 'off') ? 'checked': '';?>>
+                                <label class="form-check-label" for="recaptcha-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Recaptcha Key</label>
+                                <input type="text" id="recaptcha_key" name="recaptcha_key" class="form-control" value="{{CONFIG recaptcha_key}}">
+                                
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo createMainSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_site_settings = $('form.site-settings');
+    var form_other_settings = $('form.other-settings');
+    var form_soundcloud_settings = $('form.soundcloud-settings');
+    var form_radiostation_settings = $('form.radiostation-settings');
+
+    var form_recaptcha_settings = $('form.recaptcha-settings');
+
+    form_recaptcha_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_recaptcha_settings.find('.waves-effect').text("Please wait...");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_recaptcha_settings.find('.waves-effect').text('Save');
+                $('.recaptcha-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                setTimeout(function () {
+                    $('.recaptcha-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_payment_settings = $('form.payment-settings');
+
+    form_payment_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_payment_settings.find('.waves-effect').text("Please wait...");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_payment_settings.find('.waves-effect').text('Save');
+                $('.payment-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                setTimeout(function () {
+                    $('.payment-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_site_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_site_settings.find('button').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings.find('button').text('Save');
+            	$('.site-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+            	setTimeout(function () {
+            		$('.site-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    form_other_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_other_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_other_settings.find('.waves-effect').text('Save');
+                $('.other-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.other-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_soundcloud_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_soundcloud_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_soundcloud_settings.find('.waves-effect').text('Save');
+                $('.soundcloud-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.soundcloud-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_radiostation_settings.ajaxForm({
+        url: '{{CONFIG ajax_url}}/ap/save-settings',
+        beforeSend: function() {
+            form_radiostation_settings.find('.waves-effect').text("Please wait");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_radiostation_settings.find('.waves-effect').text('Save');
+                $('.radiostation-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.radiostation-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+
+});
+</script>
