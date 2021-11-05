@@ -1,5 +1,0 @@
-{
-    "require": {
-        "nicolab/php-ftp-client": "^1.4"
-    }
-}

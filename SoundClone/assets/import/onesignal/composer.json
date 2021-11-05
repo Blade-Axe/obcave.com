@@ -1,7 +1,0 @@
-{
-    "require": {
-        "guzzlehttp/psr7": "^1.4",
-        "php-http/guzzle5-adapter": "^1.0",
-        "norkunas/onesignal-php-api": "dev-master"
-    }
-}
