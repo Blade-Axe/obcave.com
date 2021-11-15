@@ -10,7 +10,7 @@
 <title>obcave - template</title>
 
 <!-- css and decoration -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/teststyle.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
 
@@ -41,55 +41,54 @@
 <body>
 
 <!-- navigation Bar -->
+
 <nav>
-    <p><span>ob</span>cave │</p>
-    <ul>
-        <li><a href="index.html">home</a></li>
-        <li><a href="#">ob stuff <i class="fas fa-angle-down"></i></a>
-            <ul>
-                <li><a href="discord.html">ob chat</a></li>
-                <li><a href="games.html">games</a></li>
-            </ul>
-        </li>
-        <li><a href="#">music <i class="fas fa-angle-down"></i></a>
-            <ul>
-                <li><a href="#">AKA</a></li>
-                <li><a href="#">BladeAxe</a></li>
-                <li><a href="#">Amplified-Rythm</a></li>
-            </ul>
-        </li>
-        <li><a href="#">storage</a></li>
-        <li><a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">obphi bot <i class="fas fa-external-link-alt"></i></a></li>
-        <li><a href="login.html">login</a>
-    </ul>
-    <div class="ham">
-    <strong id="mobile-menu-btn">&#9776</i></strong> 
-    </div>       
+    <!--<div class="logo">obcave</div>-->
     <img src="icons/moon.png" id="theme-switch-icon">
+    <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+    </label>
+    <input type="checkbox" id="btn">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+            <label for="btn-2" class="show">obstuff +</label>
+            <a href="#">obstuff</a>
+            <input type="checkbox" id="btn-2">
+            <ul>
+                <li><a href="discord.html">obchat</a></li>
+                <li><a href="games.html">games</a></li>
+                <li>
+                    <label for="btn-3" class="show">more +</label>
+                    <a href="#">more
+                        <span class="fa fa-plus"></span>
+                    </a>
+                    <input type="checkbox" id="btn-3">
+                    <ul>
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <li>
+                <label for="btn-1" class="show">Features +</label>
+                <a href="#">Features</a>
+                <input type="checkbox" id="btn-1">
+                <ul>
+                    <li><a href="#">test</a></li>
+                    <li><a href="#">test</a></li>
+                    <li><a href="#">test</a></li>
+                </ul>
+            </li>
+        </li>
+        <li><a href="#">test</a></li>
+        <li><a href="#">test</a></li>
+    </ul>
 </nav>
 
-
-<div class="mobile-menu">
-    <a href="index.html">home</a>
-    <a href="#">ob stuff <i class="fas fa-angle-down"></i>
-    <div class="dropdownmusic">
-        <a href="discord.html">ob chat</a>
-        <a href="games.html">games</a>
-    </div>
-    <a href="#">music <i class="fas fa-angle-down"></i>
-    <div class="dropdownmusic">
-        <a href="#">AKA</a>
-        <a href="#">BladeAxe</a>
-        <a href="#">Amplified-Rythm</a>
-    </div>
-    <a href="#">storage</a>
-    <a href="https://discord.com/oauth2/authorize?client_id=896047840986550273&permissions=0&scope=bot">obphi bot <i class="fas fa-external-link-alt"></i></a>
-    <a href="#">login</a>
-</div>
-
-<!-- Content -->
+<!-- Content 
 <div class="container">
-    <h1><span>ob</span>cave</h1>
     <div class="row">
         <div class="service">
             <a href="template.html">
@@ -98,9 +97,9 @@
             <p>example text</p></a>
         </div>
     </div>
-</div>
+</div>-->
 
-<!-- footer -->
+<!-- footer 
 <footer>
     <div class="rowfooter">
         <div class="col">
@@ -116,7 +115,7 @@
         <div class="col"></div>
         <div class="col"></div>
     </div>
-</footer>
+</footer>-->
 
 <!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
