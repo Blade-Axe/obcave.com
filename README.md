@@ -14,7 +14,8 @@ obcave is a small project that aims to provide:
 - rating system
 - live chat
 - more site customisaton
-- ~~profiles?~~ 
+- login system
+- profiles
 
 ## Current Project Members:
 
