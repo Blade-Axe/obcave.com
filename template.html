@@ -3,16 +3,16 @@
 <head>
 
 <!-- website formatting -->
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- website name -->
-<title>obcave - template</title>
+<title>Converting the hamburger icon to X and vice versa</title>
 
 <!-- css and decoration -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/teststyle.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
 
 <!-- webicons -->
 <link rel="apple-touch-icon" sizes="57x57" href="images/icons/ob/apple-touch-icon-57x57.png" />
@@ -38,90 +38,27 @@
 </head>
 
 <!-- website -->
-<body>
 
-<!-- navigation Bar -->
+<body id="bg-img">
+	<header>
+		<div class="menu-btn">
+			<div class="btn-line"></div>
+			<div class="btn-line"></div>
+			<div class="btn-line"></div>
+		</div>
 
-<nav>
-    <!--<div class="logo">obcave</div>-->
-    <img src="icons/moon.png" id="theme-switch-icon">
-    <label for="btn" class="icon">
-        <span class="fa fa-bars"></span>
-    </label>
-    <input type="checkbox" id="btn">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-            <label for="btn-2" class="show">obstuff +</label>
-            <a href="#">obstuff</a>
-            <input type="checkbox" id="btn-2">
-            <ul>
-                <li><a href="discord.html">obchat</a></li>
-                <li><a href="games.html">games</a></li>
-                <li>
-                    <label for="btn-3" class="show">more +</label>
-                    <a href="#">more
-                        <span class="fa fa-plus"></span>
-                    </a>
-                    <input type="checkbox" id="btn-3">
-                    <ul>
-                        <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <li>
-                <label for="btn-1" class="show">Features +</label>
-                <a href="#">Features</a>
-                <input type="checkbox" id="btn-1">
-                <ul>
-                    <li><a href="#">test</a></li>
-                    <li><a href="#">test</a></li>
-                    <li><a href="#">test</a></li>
-                </ul>
-            </li>
-        </li>
-        <li><a href="#">test</a></li>
-        <li><a href="#">test</a></li>
-    </ul>
-</nav>
-
-<!-- Content 
-<div class="container">
-    <div class="row">
-        <div class="service">
-            <a href="template.html">
-            <i class="fas fa-archive"></i>
-            <h2>ob <gr1>template</gr1></h2>
-            <p>example text</p></a>
-        </div>
-    </div>
-</div>-->
-
-<!-- footer 
-<footer>
-    <div class="rowfooter">
-        <div class="col">
-            <img src="images/icons/ob/favicon.ico" class="logo">
-            <p>placeholder text</p>
-        </div>
-        <div class="col">
-            <h3>test</h3>
-            <p>placeholder</p>
-            <p class="email-id">test</p>
-            <h4>test</h4>
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-    </div>
-</footer>-->
+		<nav class="menu">
+            <li><a href="#">AKA</a></li>
+            <li><a href="#">BladeAxe</a></li>
+            <li><a href="#">Amplified-Rythm</a></li>
+		</nav>
+	</header>
 
 <!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="scripts/theme_mgr.js"></script>
-<script src="scripts/mobilemenu.js"></script>
+<script src="menueffect.js"></script>
+
 
 </body>
 </html>
-
