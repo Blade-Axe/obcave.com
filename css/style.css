@@ -452,3 +452,14 @@ footer{
     border-bottom: 1px solid #ccc;
     margin: 20px 0;
 }
+.main4{
+    display: block;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    background: #2adea2;
+}
+.head4{
+    display: block;
+    text-align: center;
+    background-color: #2adea2;
+}
