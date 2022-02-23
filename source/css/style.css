@@ -13,7 +13,7 @@
     --services-background: #d8dce6;
     --navbarhover-color: #151231;
     --navbar-color: #2d3146;
-    --gradient-a: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
+    --gradient-a: linear-gradient(90deg, #e91313 0%, #da4b09 95%);
     --mobilemenudropdowntext: #5ac48f;
     --box-shadow: rgba(0,0,0,0.2);
 } 
@@ -26,7 +26,7 @@
     --services-background: #2d3146;
     --navbarhover-color: #2d202d;
     --navbar-color: #1b1e2e;
-    --gradient-a: linear-gradient(90deg, #8bda73 0%, #5ac48f 95%);
+    --gradient-a: linear-gradient(90deg, #ec4034 0%, #e04700 95%);
     --mobilemenudropdowntext: #8bda73;
     --box-shadow: rgba(0,0,0,0.2);
 }
