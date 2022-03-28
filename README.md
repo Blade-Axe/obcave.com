@@ -12,13 +12,12 @@ obcave is a small project that aims to provide:
 - music uploader
 - music displayer/player
 - rating system
+- gallery
 - live chat
 - more site customisaton
-- login system
-- profiles
 
 ## Current Project Members:
 
 BladeAxe, Kryzp, AKA_gamersensi, Izooc
 
-###### (Copyright 2021 - obcave group)
+###### (Copyright 2022 - obcave Development)
