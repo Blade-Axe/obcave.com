@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/464320663050518533/900137301710094346/0EF13163-CA83-4715-A988-7CB749040925.png" alt="ob" width="400"/>
+<img src="https://media.discordapp.net/attachments/464320663050518533/1016672446537011231/obclogomountainwhitetransparentsquaretall.png?width=663&height=663" alt="ob" width="400"/>
 
 # obcave.com
 
