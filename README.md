@@ -18,10 +18,10 @@ obcave is a small project that aims to provide:
 
 ## Current Look:
 
-# Dark Mode
+### Dark Mode
 <img src="https://cdn.discordapp.com/attachments/1089873363025018960/1089873429391487076/obcave-dark.png" alt="ob" width="400"/>
 
-# Light Mode
+### Light Mode
 <img src="https://cdn.discordapp.com/attachments/1089873363025018960/1089873429638938674/obcave-light.png" alt="ob" width="400"/>
 
 ## Current Project Members:
