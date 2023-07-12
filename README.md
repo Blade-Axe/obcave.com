@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/464320663050518533/900137301710094346/0EF13163-CA83-4715-A988-7CB749040925.png" alt="ob" width="400"/>
+<img src="https://media.discordapp.net/attachments/464320663050518533/1016710537268174969/obicon.png" alt="ob" width="400"/>
 
 # obcave.com
 
@@ -12,13 +12,20 @@ obcave is a small project that aims to provide:
 - music uploader
 - music displayer/player
 - rating system
+- gallery
 - live chat
 - more site customisaton
-- login system
-- profiles
+
+## Current Look:
+
+### Dark Mode
+<img src="https://cdn.discordapp.com/attachments/1089873363025018960/1089873429391487076/obcave-dark.png" alt="ob" width="400"/>
+
+### Light Mode
+<img src="https://cdn.discordapp.com/attachments/1089873363025018960/1089873429638938674/obcave-light.png" alt="ob" width="400"/>
 
 ## Current Project Members:
 
 BladeAxe, Kryzp, AKA_gamersensi, Izooc
 
-###### (Copyright 2021 - obcave group)
+###### (Copyright 2022 - obcave Development)
